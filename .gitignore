@@ -3,5 +3,6 @@
 *~
 .python-version
 contest.acc.json
-test
+sample-*.in
+sample-*.out
 a.out
