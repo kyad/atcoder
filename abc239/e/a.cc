@@ -5,11 +5,8 @@ using namespace std;
 vector<int> X;
 vector<vector<int> > graph;
 vector<vector<int> > dp;
-vector<bool> visited;
 void dfs(int u, int parent) {
-  visited[u] = true;
-  vector<int> ans(20, 0);
-  ans[0] = X[u];
+  dp[u][0] = X[u];
   for (size_t i = 0; i < graph[u].size(); i++) {
     int v = graph[u][i];
     if (v == parent) {
@@ -21,8 +18,8 @@ void dfs(int u, int parent) {
     int vi = 0;
     vector<int> merged(20, 0);
     for (int k = 0; k < 20; k++) {
-      if (ans[ui] >= dp[v][vi]) {
-        merged[k] = ans[ui];
+      if (dp[u][ui] >= dp[v][vi]) {
+        merged[k] = dp[u][ui];
         ui++;
       } else {
         merged[k] = dp[v][vi];
@@ -30,11 +27,8 @@ void dfs(int u, int parent) {
       }
     }
     for (int k = 0; k < 20; k++) {
-      ans[k] = merged[k];
+      dp[u][k] = merged[k];
     }
-  }
-  for (int k = 0; k < 20; k++) {
-    dp[u][k] = ans[k];
   }
   return;
 }
@@ -56,7 +50,6 @@ int main() {
     graph.at(b).push_back(a);
   }
   dp.resize(N, vector<int>(20, 0));
-  visited.resize(N, false);
   dfs(0, -1);
   for (int q = 0; q < Q; q++) {
     int V, K;
