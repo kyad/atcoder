@@ -43,14 +43,14 @@ int main() {
   const int MOD = 998244353;
   vector<vector<long long> > dp0(200001, vector<long long>(2, 0));
   vector<vector<long long> > dp1(200001, vector<long long>(2, 0));
-  // dp0
+  // dp0[i][j]: i個目まで見た時にi個目を使う(j=1)/使わない(j=0)場合の数で、1個目を使わないもの。
   dp0[1][0] = 1;
   dp0[1][1] = 0;
   for (int n = 2; n <= 200000; n++) {
     dp0[n][0] = dp0[n - 1][1];
     dp0[n][1] = (dp0[n - 1][0] + dp0[n - 1][1]) % MOD;
   }
-  // dp1
+  // dp1[i][j]: i個目まで見た時にi個目を使う(j=1)/使わない(j=0)場合の数で、1個目を使うもの。
   dp1[1][0] = 0;
   dp1[1][1] = 1;
   for (int n = 2; n <= 200000; n++) {
@@ -69,6 +69,7 @@ int main() {
 #endif
   vector<long long> count(200001, 0);
   for (int n = 1; n <= 200000; n++) {
+    // ここでdp0[n][0]は足せないけどdp1[n][0]は足せるので、dp0とdp1を場合分けする必要がある。
     count[n] += dp0[n][1];
     count[n] %= MOD;
     count[n] += dp1[n][0];
