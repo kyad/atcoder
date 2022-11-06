@@ -3,10 +3,13 @@ all: a.out
 #all: a.out naive.out
 
 a.out: a.cc
-	g++ -I $(HOME)/ac-library $< -Wall -g3
+	g++ -I $(HOME)/ac-library $< -o $@ -Wall -g3
 
 naive.out: naive.cc
-	g++ -I $(HOME)/ac-library $< -Wall -g3
+	g++ -I $(HOME)/ac-library $< -o $@ -Wall -g3
+
+segtree.out: segtree.cc
+	g++ -I $(HOME)/ac-library $< -o $@ -Wall -g3
 
 .PHONY: clean
 clean:
