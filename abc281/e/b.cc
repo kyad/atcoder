@@ -42,25 +42,25 @@ int main() {
       T.erase(T.find(A[i]));
     }
     // A[M + i]を加える
-    if (S.empty() || A[M + i] < (*prev(S.end()))) {  // K==1の場合はSがemptyになる
+    if (S.empty() || A[M + i] < *S.rbegin()) {
       S.insert(A[M + i]);
       sum += A[M + i];
     } else {
       T.insert(A[M + i]);
     }
     // 個数を調整
-    assert(((int)S.size() == K - 1) || ((int)S.size() == K) || ((int)S.size() == K + 1));
-    if ((int)S.size() == K - 1) {
+    int sz = S.size();
+    assert(sz == K - 1 || sz == K || sz == K + 1);
+    if (sz == K - 1) {
       // T -> S
       S.insert(*T.begin());
       sum += *T.begin();
       T.erase(T.begin());
-    } else if ((int)S.size() == K + 1) {
+    } else if (sz == K + 1) {
       // S -> T
-      auto it = prev(S.end());
-      sum -= *it;
-      T.insert(*it);
-      S.erase(it);
+      T.insert(*prev(S.end()));
+      sum -= *prev(S.end());
+      S.erase(prev(S.end()));
     }
     ans.push_back(sum);
   }
