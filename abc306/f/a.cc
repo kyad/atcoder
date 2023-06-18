@@ -9,9 +9,7 @@ template<class T> struct binary_indexed_tree {
   int N;
   vector<T> bit;  // 1-indexed
   binary_indexed_tree() {}
-  binary_indexed_tree(int n) : N(n) {
-    bit.resize(N + 1, 0);
-  }
+  binary_indexed_tree(int n) : N(n) { bit.resize(N + 1, 0); }
   void resize(int n) {
     N = n;
     bit.resize(N + 1, 0);
@@ -25,9 +23,7 @@ template<class T> struct binary_indexed_tree {
   }
   // Add x to a[k], O(logN)
   // k: 0-indexed
-  void add0(int k, T x) {
-    add1(k + 1, x);
-  }
+  void add0(int k, T x) { add1(k + 1, x); }
   // Returns a[1] + a[2] + ... + a[k], O(logN)
   // k: 1-indexed
   T sum1(int k) {
@@ -54,9 +50,7 @@ template<class T> struct binary_indexed_tree {
   }
   // Returns a[0] + a[1] + ... + a[k], O(logN)
   // k: 0-indexed
-  T sum0(int k) {
-    return sum1(k + 1);
-  }
+  T sum0(int k) { return sum1(k + 1); }
   // Returns a[0] + a[1] + ... + a[k - 1], O(logN)
   // 半開区間の場合は[0, k)が空集合(k==0)の場合にも使え、0を返す。
   T sum0_open(int k) {
@@ -66,9 +60,7 @@ template<class T> struct binary_indexed_tree {
     return sum1(k);
   }
   // Returns a[l] + a[l + 1] + ... + a[r], O(logN)
-  T sum0(int l, int r) {
-    return sum1(l + 1, r + 1);
-  }
+  T sum0(int l, int r) { return sum1(l + 1, r + 1); }
   // Returns a[l] + a[l + 1] + ... + a[r - 1], O(logN)
   // 半開区間の場合は[l, r)が空集合(l==r)の場合にも使え、0を返す。
   T sum0_open(int l, int r) {
@@ -77,6 +69,9 @@ template<class T> struct binary_indexed_tree {
     }
     return sum1(l + 1, r + 1 - 1);
   }
+  // Returns a[k]
+  T get1(int k) { return (k == 1) ? sum1(k) : (sum1(k) - sum1(k - 1)); }
+  T get0(int k) { return get1(k + 1); }
   // Returns minimum x such that a[1] + a[2] + ... + a[x] >= w, O(logN)
   // return: 1-indexed (0: not found)
   T lower_bound1(T w) {
@@ -98,9 +93,7 @@ template<class T> struct binary_indexed_tree {
     }
   }
   // return: 0-indexed (-1: not found)
-  T lower_bound0(T w) {
-    return lower_bound1(w) - 1;
-  }
+  T lower_bound0(T w) { return lower_bound1(w) - 1; }
 };
 
 // BITの区間加算・1点取得はimos法の値をbitで管理する。
@@ -111,6 +104,9 @@ template<class T> struct binary_indexed_tree {
 
 // A[i]にiの多項式を掛けた値の和を計算したい場合は、
 // iについて展開して、i^k*A[i]を要素に持つbinary indexed treeを考える
+
+// Example
+// binary_indexed_tree<int> bit(N);
 
 int main() {
   int N, M;
@@ -151,6 +147,9 @@ int main() {
       bit.add0(i, 1);
     }
     ans += now;
+  }
+  for (int i = 0; i < N; i++) {
+    assert(bit.get0(i) == 1);
   }
   cout << ans << endl;
   return 0;
