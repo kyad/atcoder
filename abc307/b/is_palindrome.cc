@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-bool is_pendrome(string S) {
+bool is_palindrome(string S) {
   int N = S.size();
   for (int l = 0; l < N / 2; l++) {
     int r = N - 1 - l;
@@ -28,7 +28,7 @@ int main() {
         continue;
       }
       string T = S[i] + S[j];
-      if (is_pendrome(T)) {
+      if (is_palindrome(T)) {
         cout << "Yes" << endl;
         return 0;
       }
