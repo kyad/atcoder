@@ -1,5 +1,3 @@
-// https://www.youtube.com/watch?v=VluAlzOH83I&t=3627s
-
 #include <algorithm>
 #include <cassert>
 #include <iostream>
@@ -25,11 +23,21 @@ int main() {
       return 0;
     }
   }
+  int i = N - 1;
   mint ans = 0;
-  for (int i = N - 1; i >= 1; i--) {
-    const int a = S[i] - '0';
-    ans++;
-    ans += ans * (a - 1);
+  while (i >= 1) {
+    // Find q
+    const int q = S[i] - '0';
+    const int qi = i;
+    i--;
+    // Find p
+    while (i >= 1 && S[i] == '1') {
+      i--;
+    }
+    const int p = qi - i - 1;
+    // Calc
+    ans += ans * (q - 1);
+    ans += p + q;
   }
   cout << ans << endl;
   return 0;
