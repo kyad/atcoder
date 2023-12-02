@@ -138,7 +138,7 @@ template<class T> void compress(vector<T>& A) {
     mp[A[i]]++;
   }
   int count = 0;
-  for (map<long long, int>::iterator it = mp.begin(); it != mp.end(); it++) {
+  for (typename map<T, int>::iterator it = mp.begin(); it != mp.end(); it++) {
     it->second = count++;
   }
   for (size_t i = 0; i < A.size(); i++) {
