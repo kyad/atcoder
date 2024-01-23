@@ -1,0 +1,69 @@
+# Union-Find
+parent = []
+size = []
+
+●(Nで)UnionFind初期化とは
+  nを0からN-1まで繰り返す
+    parent[n] = -1
+    size[n] = 1
+  ここまで。
+ここまで。
+
+●(xの)rootとは  # x: 0-indexed
+  もし、parent[x]が-1ならば
+    xを戻す。
+  違えば
+    (parent[x]のroot)を答えに代入する。
+    parent[x]=答え。  # 入れるとO(alpha(N))、入れないとO(log(N))
+    答えを戻す。
+  ここまで。
+ここまで。
+
+●(xとyが)issameとは  # x, y: 0-indexed
+  xのrootをrxに代入する。
+  yのrootをryに代入する。
+  答え = (rx == ry)。
+  答えを戻す。
+ここまで。
+
+●(xとyを)uniteとは  # x, y: 0-indexed
+  xのrootをrxに代入する。
+  yのrootをryに代入する。
+  もし、(rx == ry)ならば、
+    いいえを戻す。
+  ここまで。
+  もし、size[rx] < size[ry]ならば、  # Union by size
+    tmp = rx
+    rx = ry
+    ry = tmp
+  ここまで。
+  parent[ry] = rx
+  size[rx] = size[rx] + size[ry]
+  はいを戻す。
+ここまで。
+
+
+# 標準入力
+「/dev/stdin」を開いて、改行で区切って、全入力に代入する。
+全入力[0]を「 」で区切り、入力行に代入する。
+
+入力行[0]を整数変換して、Nに代入する。
+入力行[1]を整数変換して、Qに代入する。
+
+NでUnionFind初期化。
+
+Q回
+  全入力[回数]を「 」で区切り、入力行に代入する。
+  入力行[0]を整数変換して、Tに代入する。
+  入力行[1]を整数変換して、Uに代入する。
+  入力行[2]を整数変換して、Vに代入する。
+  もし、Tが0ならば、
+    UとVをunite。
+  違えば、
+    もし、UとVがissameならば、
+      「1」と表示。
+    違えば、
+      「0」と表示。
+    ここまで。
+  ここまで。
+ここまで。
