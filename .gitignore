@@ -1,6 +1,7 @@
 *.orig
 *.rej
 *~
+.clangd
 .python-version
 contest.acc.json
 sample-*.in
