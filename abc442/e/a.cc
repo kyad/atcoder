@@ -4,33 +4,34 @@
 #include <vector>
 using namespace std;
 
+// 偏角ソート
 // r = y / x
 struct Rat {
   int y;
   int x;
-  int k;
-  Rat(int ay, int ax) : y(ay), x(ax) {
+  int k;  // 象限
+  Rat(int ay, int ax) : y(ay), x(ax) {  // (x, y)は原点でない
     if (x > 0 && y == 0) {
-      k = 0;
+      k = 0;  // X軸上、X>0
     } else if (x > 0 && y > 0) {
-      k = 1;
+      k = 1;  // 第一象限
     } else if (x == 0 && y > 0) {
-      k = 2;
+      k = 2;  // Y軸上、Y>0
     } else if (x < 0 && y > 0) {
-      k = 3;
+      k = 3;  // 第二象限
     } else if (x < 0 && y == 0) {
-      k = 4;
+      k = 4;  // X軸上、X<0
     } else if (x < 0 && y < 0) {
-      k = 5;
+      k = 5;  // 第三象限
     } else if (x == 0 && y < 0) {
-      k = 6;
+      k = 6;  // Y軸上、Y<0
     } else if (x > 0 && y < 0) {
-      k = 7;
+      k = 7;  // 第四象限
     } else {
       assert(false);
     }
   }
-  friend bool operator<(const Rat &r0, const Rat &r1) {
+  friend bool operator<(const Rat &r0, const Rat &r1) {  // 偏角ソート順
     int k0 = r0.k;
     int k1 = r1.k;
     if (k0 != k1) {
@@ -70,7 +71,7 @@ int main() {
     Rs.push_back(r);
     rs.push_back(r);
   }
-  sort(rs.begin(), rs.end());
+  sort(rs.begin(), rs.end());  // 偏角ソート
   for (int qi = 0; qi < Q; qi++) {
     int A, B;
     cin >> A >> B;
@@ -80,18 +81,12 @@ int main() {
     int P = prev(upper_bound(rs.begin(), rs.end(), ra)) - rs.begin();
     int Q = prev(lower_bound(rs.begin(), rs.end(), rb)) - rs.begin();
     int ans;
-    if (ra.k > rb.k) {
+    int a = upper_bound(rs.begin(), rs.end(), ra) - rs.begin();
+    int b = upper_bound(rs.begin(), rs.end(), rb) - rs.begin();
+    if (a >= b) {
       ans = P - Q;
-    } else if (ra.k < rb.k) {
-      ans = P + (N - Q);
     } else {
-      int a = upper_bound(rs.begin(), rs.end(), ra) - rs.begin();
-      int b = upper_bound(rs.begin(), rs.end(), rb) - rs.begin();
-      if (a >= b) {
-        ans = P - Q;
-      } else {
-        ans = P + (N - Q);
-      }
+      ans = P + (N - Q);
     }
     cout << ans << '\n';
   }
