@@ -1,0 +1,1 @@
+ll@(N,K);ll@D[N];sortA(N,D);ll ans=0;rep(i,N-K)ans+=D[i];wt(ans);
