@@ -1,0 +1,1 @@
+ll@(N,M,K);ll@A[N];ll@B[M]--;ll c=0,t=0;rep(j,M)if(A[B[j]]<K)c++,t+=A[B[j]];wt(c,t);
