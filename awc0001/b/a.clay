@@ -1,0 +1,6 @@
+int @N, @L, @R;
+int @P[N];
+int mx=-1;
+int res=-1;
+rep(i,N)if(L<=P[i]<=R&&P[i]>mx)mx=P[i],res=i+1;
+wt(res);
