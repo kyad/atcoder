@@ -1,0 +1,1 @@
+ll@N,@K,@M;ll@A[N];ll ans=0,sum=0;ll r=0;rep(l,N){while(1){if(sum>=M&&r-l>=K)break;ll nr=r+1;if(nr>=N+1)break;r=nr;sum+=A[r-1];}if(sum>=M&&r-l>=K)ans+=N-r+1;if(l==r)r++;else sum-=A[l];}wt(ans);

@@ -1,0 +1,1 @@
+ll@N,@K;ll a=0;rep(N){ll@A,@B;if(A*B>=K)a++;}wt(a);

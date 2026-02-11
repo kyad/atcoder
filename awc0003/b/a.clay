@@ -1,0 +1,1 @@
+ll@N;char@(L[N],R[N]);ll a=0;rep(i,N-1)if(R[i]==L[i+1])a++;wt(a);

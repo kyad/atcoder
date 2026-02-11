@@ -1,0 +1,1 @@
+ll@N,@M;ll@W[N];ll@C[M];ll sumW=0,sumC=0;rep(i,N)sumW+=W[i];rep(j,M)sumC+=C[j];rsortA(N,W);rsortA(M,C);if(sumW>sumC||W[N-1]>C[0])wt("No"),exit(0);auto f=[&M,&N,&C,&W](auto f,int i)->bool{if(i==N)return true;for(int j=0;j<M;j++){if(C[j]<W[i])continue;C[j]-=W[i];if(f(f,i+1))return true;C[j]+=W[i];}return false;};wt(f(f,0)?"Yes":"No");
