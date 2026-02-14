@@ -1,0 +1,15 @@
+int@N,@K;
+int A[N+1];
+for(int i=1;i<=N;i++)rd(A[i]);
+A[0]=0;
+ll S[N+1];
+S[0]=0;
+for(int i=1;i<=N;i++)S[i]=S[i-1]+A[i];
+ll ans=0;
+map<ll,int>mp;
+for(int i=N;i>=1;i--){
+  mp[S[i]]++;
+  ll x=S[i-1]+K;
+  ans+=mp[x];
+}
+wt(ans);
