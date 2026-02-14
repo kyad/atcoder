@@ -1,0 +1,7 @@
+int @N,@T;
+ll ans=0;
+rep(N){
+  ll@A,@B;
+  ans+=max(A-B*T,0);
+}
+wt(ans);
