@@ -1,0 +1,11 @@
+int@(N,M,K);
+int@S[N];
+rep(j,M){
+  int@P--,@V;
+  S[P]=V;
+}
+int res=0;
+rep(i,N){
+  if(S[i]<K)res++;
+}
+wt(res);
