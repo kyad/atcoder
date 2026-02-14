@@ -1,0 +1,10 @@
+int@N;
+int@A[N]--;
+int dp[N];
+dp[N-1]=A[N-1];
+rrep(i,N-1){
+  if(A[i]==i)dp[i]=i;
+  else dp[i]=dp[A[i]];
+}
+rep(i,N)dp[i]++;
+wt(dp(N));
