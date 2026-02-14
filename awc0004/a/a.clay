@@ -1,0 +1,3 @@
+int@(N,S,T);
+int@A[N];
+wt(sum(A(N))<=(T-S)*60?"Yes":"No");
