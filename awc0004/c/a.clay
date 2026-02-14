@@ -1,0 +1,4 @@
+int@N;
+ll@H[N];
+sortA(N,H);
+wt(abs(H[0])+(H[N-1]-H[0])+abs(H[N-1]));
