@@ -1,0 +1,5 @@
+int@N,@K;
+ll@P[N];
+ll res=0;
+rep(i,N)if(P[i]%K==0)res+=P[i];
+wt(res);
