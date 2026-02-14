@@ -1,0 +1,6 @@
+int@N,@K;
+int@A[N];
+ll res=0,d;
+rep(i,N-1)if(A[i+1]<A[i]-K)d=A[i]-K-A[i+1],A[i+1]+=d,res+=d;
+rrep(i,N-1)if(A[i]<A[i+1]-K)d=A[i+1]-K-A[i],A[i]+=d,res+=d;
+wt(res);
