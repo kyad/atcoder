@@ -1,0 +1,13 @@
+int@N,@K;
+int@A[N];
+ll l=0,r=1e14+1;
+while(r-l>1){
+  ll m=(l+r)/2;
+  ll nokori=m;
+  int k=1;
+  rep(i,N){
+    if(nokori>=A[i])nokori-=A[i];else{nokori=m;k++;}
+  }
+  if(k<=K)r=m;else{l=m;}
+}
+wt(r);
