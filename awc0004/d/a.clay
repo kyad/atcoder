@@ -1,0 +1,21 @@
+// https://atcoder.jp/contests/awc0004/editorial/15793
+int@N,@M;
+int@(L[M],R[M]);
+sortA(M,L,R);
+priority_queue<int,vector<int>,greater<int>>pq;
+int j=0;
+for(int i=1;i<=N;i++){
+  while(j<M){
+    if(L[j]==i){
+      pq.push(R[j]);j++;
+    }else{
+      break;
+    }
+  }
+  if(!pq.empty()){
+    if(i>pq.top())wt("No"),exit(0);
+    pq.pop();
+  }
+}
+if(!pq.empty())wt("No"),exit(0);
+wt("Yes");
