@@ -1,0 +1,30 @@
+int @(H,W,N);
+int @(h[N],w[N]);
+set<tuple<int,int,int>>st1,st2;
+rep(i,N){
+  st1.insert(make_tuple(h[i],w[i],i));
+  st2.insert(make_tuple(w[i],h[i],i));
+}
+int y[N],x[N];
+rep(i,N)y[i]=x[i]=-1;
+rep(i,N-1){
+  auto[h1,w1,i1]=*st1.rbegin();
+  auto[w2,h2,i2]=*st2.rbegin();
+  if(h1==H){
+    y[i1]=0;
+    x[i1]=W-w1;
+    W-=w1;
+    st1.erase(*st1.rbegin());
+    st2.erase(make_tuple(w1,h1,i1));
+  }else if(w2==W){
+    y[i2]=H-h2;
+    x[i2]=0;
+    H-=h2;
+    st1.erase(make_tuple(h2,w2,i2));
+    st2.erase(*st2.rbegin());
+  }
+}
+rep(i,N){
+  if(x[i]<0)wt("1 1");
+  else wt(y[i]+1,x[i]+1);
+}
