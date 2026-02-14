@@ -1,0 +1,15 @@
+int@N;
+VS S(N);
+rep(i,N){
+  rd(S[i]);
+}
+int m=-1;
+rep(i,N)m>?=(int)S[i].size();
+rep(i,N){
+  int a=(m-(int)S[i].size())/2;
+  string T;
+  rep(j,a)T+=".";
+  T+=S[i];
+  rep(j,a)T+=".";
+  wt(T);
+}
