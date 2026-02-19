@@ -1,0 +1,4 @@
+int@N,@M;
+ll@E[N];
+ll@C[M];
+wt(min(E(N))*sum(C(M)));
