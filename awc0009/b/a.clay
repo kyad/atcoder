@@ -1,0 +1,7 @@
+ll@(N,S,C);
+ll res=0;
+rep(N){
+  ll@H,@P;
+  if(S>=H)S+=P-H;else res+=C;
+}
+wt(res);
