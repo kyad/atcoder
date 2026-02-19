@@ -1,0 +1,1 @@
+ll@(N,K,T);ll@(D[N],R[N]);ll e=0;rep(i,N)if(R[i]>=K*D[i])e+=R[i];wt(e>=T?"Yes":"No");
