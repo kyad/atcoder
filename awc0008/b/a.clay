@@ -1,0 +1,1 @@
+ll@N,@H[N],M=0,r=0;rep(i,N)if(H[i]>M)M=H[i],r++;wt(r);
