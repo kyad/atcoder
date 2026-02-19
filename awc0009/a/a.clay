@@ -1,0 +1,3 @@
+int@K,@M;
+int@L[K];
+wt(sum(L(K))%M);
