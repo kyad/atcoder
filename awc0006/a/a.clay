@@ -1,0 +1,5 @@
+int@(N,L,W);
+int@D[N];
+int res=0;
+rep(i,N)if(L-W<=D[i]<=L+W)res++;
+wt(res);
