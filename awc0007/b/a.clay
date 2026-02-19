@@ -1,0 +1,17 @@
+int@N,@K;
+int M[N];
+vector<VS> W(N);
+rep(i,N){
+  rd(M[i]);
+  W[i].resize(M[i]);
+  rep(k,M[i])cin>>W[i][k];
+}
+int res=0;
+rep(i,N){
+  rep(j,i+1,N){
+    int now=0;
+    rep(k,M[i])rep(l,M[j])if(W[i][k]==W[j][l])now++;
+    if(now>=K)res++;
+  }
+}
+wt(res);
