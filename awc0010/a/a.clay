@@ -1,0 +1,3 @@
+int@N;
+ll@M,@A[N];
+wt(sum(A(N))>=M?"Yes":"No");
