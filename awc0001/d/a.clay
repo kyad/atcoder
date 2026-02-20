@@ -1,0 +1,8 @@
+int@(N,M,K);
+int@(A[N],B[N]);
+ll dp[N+1][M+1];
+rep(i,N+1)rep(j,M+1)dp[i][j]=0;
+rep(i,N)rep(j,M+1)for(int k=i;k>=max(0,i-K+1);k--)if(j-B[i]>=0)dp[i+1][j]>?=dp[k][j-B[i]]+A[i];
+ll res=0;
+rep(i,N+1)res>?=max(dp[i](M+1));
+wt(res);
