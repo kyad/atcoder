@@ -1,0 +1,1 @@
+ll@(N,K,Q);ll@A[N];unionFind uf('w',N);uf.init();rep(i,N-1)if(abs(A[i]-A[i+1])<=K)uf(i,i+1);rep(Q){ll@L--,@R--;wt(uf.get(L)==uf.get(R)?"Yes":"No");}

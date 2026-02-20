@@ -1,0 +1,64 @@
+# Union-Find
+parent = []
+size = []
+
+●(Nで)UnionFind初期化とは
+  -1をNだけ配列要素作成してparentに代入する。
+  -1をNだけ配列要素作成してsizeに代入する。
+ここまで。
+
+●(xの)rootとは  # x: 0-indexed
+  もし、parent[x]が-1ならば
+    xを戻す。
+  違えば
+    (parent[x]のroot)を答えに代入する。
+    parent[x]=答え。  # 経路圧縮。入れるとO(alpha(N))、入れないとO(log(N))
+    答えを戻す。
+  ここまで。
+ここまで。
+
+●(xとyが)issameとは  # x, y: 0-indexed
+  rxをxのrootに定める。
+  ryをyのrootに定める。
+  答え = (rx == ry)。
+  答えを戻す。
+ここまで。
+
+●(xとyを)uniteとは  # x, y: 0-indexed
+  xのrootをrxに代入する。
+  yのrootをryに代入する。
+  もし、rx == ryならば、いいえを戻す。
+  もし、size[rx] < size[ry]ならば、  # Union by size
+    tmp = rx
+    rx = ry
+    ry = tmp
+  ここまで。
+  parent[ry] = rx
+  size[rx] = size[rx] + size[ry]
+  はいを戻す。
+ここまで。
+
+
+標準入力全取得して、改行で区切り、全入力に代入
+全入力[0]を「 」で区切り、入力行に代入
+入力行[0]を整数変換して、Nに代入
+入力行[1]を整数変換して、Kに代入
+入力行[2]を整数変換して、Qに代入
+全入力[1]を「 」で区切り、Aに代入
+Aを配列数値変換
+
+NでUnionFind初期化
+iを1からN-1まで1ずつ増やし繰り返す
+  もし、((A[i-1]-A[i])の絶対値<=K)ならば、i-1とiをunite
+ここまで
+
+Q回
+  全入力[1+回数]を「 」で区切り、入力行に代入
+  入力行[0]を整数変換して、1を引いてLに代入
+  入力行[1]を整数変換して、1を引いてRに代入
+  もし、LとRがissameならば、
+    "Yes"と言う
+  違えば、
+    "No"と言う
+  ここまで
+ここまで
