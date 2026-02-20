@@ -1,0 +1,35 @@
+int@N,@K;
+int@C[N][N];
+int M=1;rep(N)M*=N;
+auto enc=[&N](int P[]){
+  int res=0;
+  for(int i=0;i<N;i++)res*=N,res+=P[i];
+  return res;
+};
+int P0[N];
+rep(i,N)P0[i]=i;
+int z0=enc(P0);
+queue<int> q;
+int dist[16777216];
+rep(j,M)dist[j]=-1;
+dist[z0]=0;
+q.push(z0);
+int res=-1;
+while(!q.empty()){
+  int z=q.front();
+  q.pop();
+  int P[N];
+  int zz=z;
+  rep(i,N)P[N-1-i]=zz%N,zz/=N;
+  int now=0;
+  rep(i,N)now+=C[P[i]][P[(i+1)%N]];
+  res>?=now;
+  if(dist[z]>=K)continue;
+  rep(i,N)rep(j,i+1,N){
+    swap(P[i],P[j]);
+    int w=enc(P);
+    if(dist[w]<0)dist[w]=dist[z]+1,q.push(w);
+    swap(P[i],P[j]);
+  }
+}
+wt(res);
