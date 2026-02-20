@@ -1,0 +1,1 @@
+ll@N,@K,@H[N];sortA(N,H);wt(K+sum(H(N-K)));
