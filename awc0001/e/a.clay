@@ -1,0 +1,11 @@
+int@N,@K;
+int@H[N];
+multiset<int> st;
+rep(i,K)st.insert(H[i]);
+int res=*st.rbegin()-*st.begin();
+rep(i,1,N-K+1){
+  st.erase(st.find(H[i-1]));
+  st.insert(H[i+K-1]);
+  res>?=*st.rbegin()-*st.begin();
+}
+wt(res);
