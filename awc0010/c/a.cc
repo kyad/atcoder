@@ -1,0 +1,103 @@
+#include <algorithm>
+#include <cassert>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+struct UnionFind {
+  vector<int> parent, _size;
+  int _num_unions;
+  // UnonFindが範囲の時の左端と右端
+  vector<int> _left;
+  vector<int> _right;
+  // 追加
+
+  UnionFind(int n) : parent(n, -1), _size(n, 1), _num_unions(n) {
+    _left.resize(n, 0);
+    _right.resize(n, 0);
+    for (int i = 0; i < n; i++) {
+      _left.at(i) = i;
+      _right.at(i) = i;
+    }
+    // 追加
+  }
+
+  int root(int x) {
+    if (parent[x] == -1) {
+      return x;
+    } else {
+      //return root(parent[x]);  // O(logN)
+      return parent[x] = root(parent[x]);  // O(alpha(N))
+    }
+  }
+
+  bool issame(int x, int y) {
+    return root(x) == root(y);
+  }
+
+  bool unite(int x, int y) {
+    x = root(x);
+    y = root(y);
+    if (x == y) {
+      return false;
+    }
+    if (_size[x] < _size[y]) {
+      swap(x, y);  // Union by size
+    }
+    // xが新しい親
+    parent[y] = x;
+    _size[x] += _size[y];
+    _num_unions--;
+
+    // 範囲の更新
+    int nleft = min(_left.at(x), _left.at(y));
+    _left.at(x) = nleft;
+    int nright = max(_right.at(x), _right.at(y));
+    _right.at(x) = nright;
+    // 追加
+
+    return true;
+  }
+
+  int size(int x) {
+    return _size[root(x)];
+  }
+
+  int num_unions() {  // unionの数(ひとまとまりになっているグループの数)を返す
+    return _num_unions;
+  }
+
+  int left(int x) {
+    return _left[root(x)];
+  }
+
+  int right(int x) {
+    return _right[root(x)];
+  }
+};
+
+int main() {
+  int N, K, Q;
+  cin >> N >> K >> Q;
+  vector<int> A(N);
+  for (int i = 0; i < N; i++) {
+    cin >> A.at(i);
+  }
+  UnionFind uf(N);
+  for (int i = 1; i < N; i++) {
+    if (abs(A.at(i - 1) - A.at(i)) <= K) {
+      uf.unite(i - 1, i);
+    }
+  }
+  for (int qi = 0; qi < Q; qi++) {
+    int L, R;
+    cin >> L >> R;
+    L--; R--;
+    if (uf.issame(L, R)) {
+      cout << "Yes\n";
+    } else {
+      cout << "No\n";
+    }
+  }
+  return 0;
+}
