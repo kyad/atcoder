@@ -1,0 +1,15 @@
+int@N,@M;
+bool used[M+1];
+used[1..M]=false;
+rep(N){
+  int @L,@X[L];
+  int res=0;
+  rep(j,L){
+    int x=X[j];
+    if(!used[x]){
+      res=x,used[x]=true;
+      break;
+    }
+  }
+  wt(res);
+}
