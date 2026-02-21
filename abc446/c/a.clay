@@ -1,0 +1,1 @@
+ll@T;int q[2d6];rep(T){ll@N,@D,@A[N],@B[N],f=0,b=0;rep(i,N){rep(j,A[i])q[b]=i,b++;rep(j,B[i])f++;while(f<b){if(q[f]<=i-D)f++;else break;}}wt(b-f);}
