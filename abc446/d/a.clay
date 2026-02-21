@@ -1,0 +1,1 @@
+ll@N,@A[N];map<ll,ll>m;rep(i,N)m[A[i]]>?=m[A[i]-1]+1;ll r=0;for(auto[k,v]:m)r>?=v;wt(r);
