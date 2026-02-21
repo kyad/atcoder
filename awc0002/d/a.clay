@@ -1,0 +1,1 @@
+ll@N,@M,@C[N],@R[M];sortA(N,C);sortA(M,R);ll r=0,i=0;rep(j,M)if(i<N&&C[i]<=R[j])i++,r++;wt(r);
