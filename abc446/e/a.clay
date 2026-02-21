@@ -1,0 +1,21 @@
+int@(M,A,B);
+int color[1000][1000];
+color[0...M-1][0..M-1]=-1;
+rep(x,M)rep(y,M){
+  int s=((A*y)%M+(B*x)%M)%M;
+  if(x==0||y==0||s==0)color[y][x]=1;
+}
+bool visited[1000][1000];
+visited[0...M-1][0..M-1]=false;
+auto f=[&color,&visited,&M,&A,&B](auto f, int y, int x){
+  if(color[y][x]>=0){visited[y][x]=true;return color[y][x];}
+  if(visited[y][x])return color[y][x]=0;
+  int s=((A*y)%M+(B*x)%M)%M;
+  if(s==0){visited[y][x]=true;return color[y][x]=1;}
+  visited[y][x]=true;
+  return color[y][x]=f(f,s,y);
+};
+rep(x,M)rep(y,M)if(color[y][x]==-1)f(f,y,x);
+int res=0;
+rep(x,M)rep(y,M)if(color[y][x]==0)res++;
+wt(res);
