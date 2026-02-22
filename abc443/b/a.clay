@@ -1,0 +1,8 @@
+ll@N,@K,res=0,tot=0;
+while(true){
+  tot+=N;
+  if(tot>=K)break;
+  res++;
+  N++;
+}
+wt(res);
