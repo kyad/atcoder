@@ -1,0 +1,7 @@
+// https://atcoder.jp/contests/abc443/editorial/15180
+int @N,@T,@A[N];
+int res=0;
+int last=0;
+rep(i,N)if(last<A[i])res+=(A[i]-last),last=A[i]+100;
+if(last<T)res+=T-last;
+wt(res);
