@@ -1,0 +1,11 @@
+int@N,@Q,@A[N];
+segtree<int> t;
+t.malloc(N);
+t.setN(N,0,0);
+rep(i,N)t[i]=-A[i];
+t.build();
+rep(Q){
+  int@L--,@R;
+  int a=t.getMinVal(L,R);
+  wt(-a);
+}
