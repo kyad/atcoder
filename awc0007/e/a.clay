@@ -1,0 +1,27 @@
+// https://atcoder.jp/contests/awc0007/editorial/15995
+
+int@N,@M;
+ll@S,@T,@P[M];
+int M2=1<<M;
+const ll INF=4e18;
+ll dp[M2][M];
+dp[0..M2-1][0...M-1]=INF;
+auto dec=[&N](ll p)->pair<int,int>{return make_pair((p-1)/N,(p-1)%N);};
+auto dist=[&dec](ll p, ll q)->ll{
+  auto[py,px]=dec(p);
+  auto[qy,qx]=dec(q);
+  return abs(py-qy)+abs(px-qx);
+};
+if(M==0){wt(dist(S,T));exit(0);}
+rep(j,M)dp[1<<j][j]=dist(S,P[j]);
+rep(s,1,M2){
+  rep(l,M){
+    rep(j,M){
+      if(s>>j&1)continue;
+      dp[s|(1<<j)][j]<?=dp[s][l]+dist(P[l],P[j]);
+    }
+  }
+}
+ll res=INF;
+rep(j,M)res<?=dp[M2-1][j]+dist(P[j],T);
+wt(res);
