@@ -1,0 +1,17 @@
+int@(N,A,B);
+unordered_set<int>a,b;
+auto enc=[&N](int y,int x){return y*(N+1)+x;};
+rep(A){
+  int@(r1,c1,r2,c2);
+  rep(y,r1,r2+1)rep(x,c1,c2+1)a.insert(enc(y,x));
+}
+rep(B){
+  int@(r1,c1,r2,c2);
+  rep(y,r1,r2+1)rep(x,c1,c2+1)b.insert(enc(y,x));
+}
+int res=0;
+rep(y,N+1)rep(x,N+1){
+  int z=enc(y,x);
+  if(a.contains(z)&&b.contains(z))res++;
+}
+wt(res);
