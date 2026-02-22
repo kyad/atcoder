@@ -1,0 +1,10 @@
+int@N,@K;
+int@A[N];
+fenwick<ll> t;
+t.malloc(N,1);
+rep(i,N)t.add(i,A[i]);
+int res=0;
+rep(i,N-K+1){
+  if(t.range(i,i+K-1)<=0)res++;
+}
+wt(res);
