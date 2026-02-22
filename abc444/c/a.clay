@@ -1,0 +1,28 @@
+set<int>res;
+int@N;
+int@A[N];
+sortA(N,A);
+if(N%2==0){
+  int L=A[0]+A[N-1];
+  bool ok=true;
+  rep(i,1,N/2)if(A[i]+A[N-1-i]!=L)ok=false;
+  if(ok)res.insert(L);
+}
+int L=A[N-1];
+vector<int>B;
+rep(i,N){
+  if(A[i]<L)B.push_back(A[i]);
+  else break;
+}
+int M=B.size();
+if(M%2==0){
+  bool ok=true;
+  rep(i,M/2){
+    int now=B[i]+B[M-1-i];
+    if(now!=L)ok=false;
+  }
+  if(ok)res.insert(L);
+}
+for(auto r:res){
+  cout<<r<<' ';
+}
