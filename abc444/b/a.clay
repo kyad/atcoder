@@ -1,0 +1,1 @@
+ll@N,@K,r=0,D[6],d;rep(n,N+1){d=Digit(n,D);if(sum(D(d))==K)r++;}wt(r);
