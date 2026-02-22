@@ -1,0 +1,1 @@
+ll@N,@M,@D,@T[N];ll r=0;rep(i,N)r+=max(0,(T[i]-M)/+D);wt(r);
