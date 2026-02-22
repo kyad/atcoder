@@ -1,0 +1,18 @@
+int@N;
+int@A[N];
+int M=2d5;
+int c[M+10];c[0..M+9]=0;
+rep(i,N)c[0]++,c[A[i]]--;
+rep(i,1,M+10)c[i]+=c[i-1];
+int d[M+10];d[0..M+9]=0;
+rep(i,M+10){
+  d[i]=c[i]%10;
+  int k=1;
+  while(c[i]>0)c[i]/=10,c[i+k]+=c[i]%10,k++;
+}
+bool first_zero=true;
+rrep(i,M+10){
+  if(first_zero&&d[i]==0)continue;
+  first_zero=false;
+  cout<<d[i];
+}
