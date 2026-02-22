@@ -1,0 +1,20 @@
+int@N;
+ll@S,@A[N];
+int N0=N/2,N1=N-N0;
+auto f=[](int N, ll *A){
+  map<ll,int>res;
+  int M=1<<N;
+  rep(b,M){
+    ll sum=0;
+    rep(i,N)if(b>>i&1)sum+=A[i];
+    res[sum]++;
+  }
+  return res;
+};
+map<ll,int>mp0=f(N0,A),mp1=f(N1,A+N0);
+ll res=0;
+for(auto[price,cnt]:mp0){
+  ll now=(ll)cnt*mp1[S-price];
+  res+=now;
+}
+wt(res);
