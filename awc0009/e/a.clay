@@ -1,0 +1,14 @@
+int@N,@Q,@A[N];
+segtree_Point_Minval<int>s;
+s.malloc(N);
+s.setN(N,0,0);
+segtree_Point_Maxval<int>t;
+t.malloc(N);
+t.setN(N,0,0);
+rep(i,N)s[i]=t[i]=A[i];
+s.build();
+t.build();
+rep(Q) {
+  int@L--,@R;
+  wt(t.getMaxVal(L,R)-s.getMinVal(L,R));
+}
