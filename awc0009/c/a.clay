@@ -1,0 +1,4 @@
+int@(N,T,K),@H[N];
+int res=0;
+rep(i,N)if(H[i]-min(H(N))<T+K)res++;
+wt(res);
