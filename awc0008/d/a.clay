@@ -1,0 +1,14 @@
+int@N,@M,@(F[N],D[N]);
+priority_queue<pair<int,int>>pq;
+rep(i,N)pq.push(make_pair(F[i],i));
+ll res=0;
+rep(M){
+  if(!pq.empty()) {
+    auto[f,i]=pq.top();
+    pq.pop();
+    res+=f;
+    f=max(0,f-D[i]);
+    pq.push(make_pair(f,i));
+  }
+}
+wt(res);
