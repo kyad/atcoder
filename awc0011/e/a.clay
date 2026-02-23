@@ -1,0 +1,25 @@
+int@N,@M;
+int A[N+1];
+ll B[N+1];
+for(int i=1;i<=N;i++)rd(A[i],B[i]);
+ll dp[N+1][M+1];dp[0..N][0...M]=-ll_inf;
+dp[0][0]=0;
+for(int i=1;i<=N;i++){
+  for(int j=0;j<=M;j++){
+    dp[i][j]>?=dp[i-1][j];
+    if(j-A[i]>=0)dp[i][j]>?=dp[i-1][j-A[i]]+B[i];
+  }
+}
+bool res[N];res[0..N-1]=false;
+bool reach[M+1];reach[0..M]=false;
+ll mx=max(dp[N](M+1));
+for(int j=0;j<=M;j++)if(mx==dp[N][j])reach[j]=true;
+for(int i=N;i>=1;i--){
+  bool next_reach[M+1];next_reach[0..M]=false;
+  for(int j=0;j<=M;j++){
+    if(reach[j]&&dp[i][j]>=0&&dp[i-1][j]>=0&&dp[i][j]==dp[i-1][j])next_reach[j]=true;
+    if(j-A[i]>=0&&reach[j]&&dp[i][j]>=0&&dp[i-1][j-A[i]]>=0&&dp[i][j]==dp[i-1][j-A[i]]+B[i])res[i-1]=true,next_reach[j-A[i]]=true;
+  }
+  reach[0..M]=next_reach[0..M];
+}
+rep(k,N)wt(res[k]?"Yes":"No");
