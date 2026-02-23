@@ -1,0 +1,6 @@
+// https://atcoder.jp/contests/awc0011/editorial/16169
+int@(N,M,S,T),@(P[M],V[M]);
+int l=min(S,T),r=max(S,T);
+ll res=0;
+rep(j,M)if(l<=P[j]<=r)res+=V[j];
+wt(res);
