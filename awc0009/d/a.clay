@@ -1,0 +1,14 @@
+ll@N,@M,L[M+1],R[M+1],c=0;
+rep(j,M)rd(L[j],R[j]);
+L[M]=ll_inf-1;R[M]=ll_inf;
+sortA(M+1,L,R);
+j=0;
+while(true){
+  while(j<M){
+    if(L[j]<=c+1)c>?=R[j],j++;
+    else break;
+  }
+  ll now=L[j]-c-1;
+  if (now>=N)wt(c+N),exit(0);
+  else N-=now,c=L[j]-1;
+}
