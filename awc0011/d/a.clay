@@ -1,0 +1,17 @@
+int@N,@Q,@V[N];
+vector<vector<int>> graph(N);
+for(int u=1;u<=N-1;u++){
+  int@P--;
+  graph.at(P).push_back(u);
+}
+ll dp[N];dp[0..N-1]=0;
+auto f=[&V,&dp,&graph](auto f,int u,int p)->void{
+  dp[u]=V[u];
+  if(p!=-1)dp[u]+=dp[p];
+  for(int v:graph[u])f(f,v,u);
+};
+f(f,0,-1);
+rep(Q){
+  int@X--;
+  wt(dp[X]);
+}
