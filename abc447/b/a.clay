@@ -1,0 +1,10 @@
+string@S;
+int N=S.size();
+int count[26];count[0..25]=0;
+rep(i,N)count[S[i]-'a']++;
+int mx=max(count(26));
+set<char>st;
+rep(i,26)if(count[i]==mx)st.insert('a'+i);
+string res;
+rep(i,N)if(!st.contains(S[i]))res.push_back(S[i]);
+wt(res);
