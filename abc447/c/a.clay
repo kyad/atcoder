@@ -1,0 +1,29 @@
+string@S,@T;
+auto f = [&](string S) -> pair<string, vector<int> > {
+  string T;
+  vector<int> P;
+  int N = S.size();
+  int count = 0;
+  for(int i=0;i<N;i++){
+    if (S.at(i) == 'A') {
+      count++;
+    } else {
+      P.push_back(count);
+      T.push_back(S.at(i));
+      count = 0;
+    }
+  }
+  P.push_back(count);
+  return make_pair(T, P);
+};
+auto[S1,P1]=f(S);
+auto[S2,P2]=f(T);
+if(S1!=S2){
+  wt(-1);
+}else{
+  assert(P1.size()==P2.size());
+  int M=P1.size();
+  int res=0;
+  rep(j,M)res+=abs(P1[j]-P2[j]);
+  wt(res);
+}
