@@ -1,0 +1,7 @@
+int@(H,W,K);
+char@c1,@c2;
+rep(y,H){
+  string@S,T;
+  rep(x,W)rep(K)T.push_back(S[x]=='#'?c1:c2);
+  rep(K)wt(T);
+}
