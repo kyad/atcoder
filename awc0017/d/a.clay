@@ -1,0 +1,14 @@
+int@(N,M,K);
+ll@A[N];
+ll@(U[M]--,V[M]--,B[M]);
+ll res=-ll_inf;
+// next_combination(N, K)
+VI mask(N, 1);
+rep(i,N-K)mask[i]=0;
+do{
+  ll now=0;
+  rep(i,N)if(mask[i])now+=A[i];
+  rep(j,M)if(mask[U[j]]&&mask[V[j]])now-=B[j];
+  res>?=now;
+}while(next_permutation(mask.begin(), mask.end()));
+wt(res);

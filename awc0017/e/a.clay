@@ -1,0 +1,12 @@
+int@N,@(X[N],Y[N]);
+auto dist = [&X,&Y](int i,int j)->ll{return (X[i]-X[j])*(X[i]-X[j])+(Y[i]-Y[j])*(Y[i]-Y[j]);};
+int N2=1<<N;
+int dp[N2][N];dp[0..N2-1][0...N-1]=int_inf;
+dp[1][0]=0;
+rep(s,1,N2)rep(l,N)rep(nl,1,N){
+  if(s>>nl&1)continue;
+  dp[s|(1<<nl)][nl]<?=dp[s][l]+dist(l,nl);
+}
+int res=int_inf;
+rep(l,1,N)res<?=dp[N2-1][l]+dist(l,0);
+wt(res);

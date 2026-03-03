@@ -1,0 +1,12 @@
+int@N,@Q;
+int C[N+1];C[0]=0;
+for(int k=1;k<=N;k++)rd(C[k]);
+int D[N];D[0..N-1]=0;
+rep(i,1,N)if(C[i]==C[i+1])D[i]=1;
+int S[N];
+S[0]=D[0];
+rep(i,1,N)S[i]=S[i-1]+D[i];
+rep(Q){
+  int@L,@R;
+  wt(S[R-1]-S[L-1]);
+}

@@ -1,0 +1,9 @@
+int@N,@M;
+ll@A[N];
+rep(M){
+  int@B--;
+  if(B>=1)A[B-1]++;
+  A[B]++;
+  if(B<=N-2)A[B+1]++;
+}
+wt(A(N));
