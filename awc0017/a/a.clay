@@ -1,0 +1,7 @@
+int@N,@K;
+ll res=0;
+rep(N){
+  int@C,@D;
+  if(C<=K)res+=D;
+}
+wt(res);
