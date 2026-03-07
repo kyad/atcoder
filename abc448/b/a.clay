@@ -1,0 +1,9 @@
+int@N,@M,@C[M];
+int res=0;
+rep(i,N){
+  int@A--,@B;
+  int now=min(B,C[A]);
+  C[A]-=now;
+  res+=now;
+}
+wt(res);
