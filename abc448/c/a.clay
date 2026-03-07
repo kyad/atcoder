@@ -1,0 +1,18 @@
+int@N,@Q,@A[N];
+int AA[N];
+AA[0..N-1]=A[0..N];
+sortA(N,AA);
+rep(Q){
+  int@K;
+  int L=min(K+1,6);
+  int C[L];
+  C[0..L-1]=AA[0..L-1];
+  rep(k,K){
+    int@B--;
+    int x=A[B];
+    rep(l,L)if(C[l]==x)C[l]=-1,break;
+  }
+  int res;
+  rep(l,L)if(C[l]!=-1)res=C[l],break;
+  wt(res);
+}
