@@ -1,0 +1,6 @@
+int@N,@X;
+rep(N){
+  int @A;
+  if(A<X)X=A,wt(1);
+  else wt(0);
+}
