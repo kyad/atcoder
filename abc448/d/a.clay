@@ -1,0 +1,25 @@
+int A[2d5];
+bool dp[2d5];
+graph g;
+multiset<int> ms;
+
+void dfs(int u, int parent){
+  if(parent>=0&&dp[parent])dp[u]=true;
+  if(ms.contains(A[u]))dp[u]=true;
+  ms.insert(A[u]);
+  rep(j,g.es[u]){
+    int v=g.edge[u][j];
+    if(v==parent)continue;
+    dfs(v,u);
+  }
+  ms.erase(ms.find(A[u]));
+}
+
+{
+  int@N;
+  rep(i,N)rd(A[i]);
+  int @(U[N-1]--,V[N-1]--);
+  g.setEdge(N,N-1,U,V);
+  dfs(0,-1);
+  rep(u,N)wt(dp[u]?"Yes":"No");
+}
