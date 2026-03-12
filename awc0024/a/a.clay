@@ -1,0 +1,5 @@
+int@N,@Q,@S[N];
+rep(Q){
+  int@a--,@b--;
+  wt(S[a]>S[b]?"Yes":"No");
+}

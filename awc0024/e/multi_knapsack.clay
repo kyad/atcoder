@@ -1,0 +1,23 @@
+int@N,@W;
+VI value,cost;
+rep(i,N){
+  int @L,@C;
+  int cnt=1;
+  while(C>0){
+    if(cnt>C){
+      value.push_back(L*C);
+      cost.push_back(C);
+      break;
+    }
+    value.push_back(L*cnt);
+    cost.push_back(cnt);
+    C-=cnt;
+    cnt*=2;
+  }
+}
+int M=value.size();
+ll dp[W+1];dp[1..W]=ll_inf;dp[0]=0;
+value.insert(value.begin(), 0);
+cost.insert(cost.begin(), 0);
+rep(i,1,M+1)for(int j=W;j>=0;j--)if(j-value[i]>=0)dp[j]<?=dp[j-value[i]]+cost[i];
+wt(dp[W]==ll_inf?-1:dp[W]);
