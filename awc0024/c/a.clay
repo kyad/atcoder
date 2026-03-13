@@ -1,0 +1,16 @@
+int@H,@W;
+VS G(H);
+rep(y,H)rd(G[y]);
+int S[H][26];S[0..H-1][0...26]=0;
+int T[W][26];T[0..W-1][0...26]=0;
+rep(y,H)rep(x,W){
+  int c=G[y][x]-'a';
+  S[y][c]++;
+  T[x][c]++;
+}
+string res;
+rep(y,H)rep(x,W){
+  int c=G[y][x]-'a';
+  if(S[y][c]==1&&T[x][c]==1)res.push_back(G[y][x]);
+}
+wt(res);
