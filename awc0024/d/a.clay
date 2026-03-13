@@ -1,0 +1,9 @@
+int@(N,W,K);
+int imos[N+1];imos[0..N]=0;
+rep(K){
+  int@L--;
+  imos[L]++;
+  imos[L+W]--;
+}
+rep(i,N)imos[i+1]+=imos[i];
+wt(imos(N));
