@@ -1,0 +1,12 @@
+int@(N,M,K);
+bool dp[N];
+dp[0..K-1]=true;
+dp[K..N-1]=false;
+rep(M){
+  int@A--,@B--;
+  if(dp[A])dp[B]=true;
+  if(dp[B])dp[A]=true;
+}
+int res=0;
+rep(i,N)if(dp[i])res++;
+wt(res);
