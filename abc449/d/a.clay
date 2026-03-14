@@ -1,0 +1,31 @@
+ll f(ll P,ll Q){
+  if(P==0||Q==0)return 0;
+  if(P<Q)swap(P,Q);
+  ll p=(P/2)*2;
+  ll q=(Q/2)*2;
+  ll in=q*(q+1)/2;
+  ll r=((Q+2)/2)*2;
+  ll out=((p-r)/2+1)*Q;
+  ll res=in+out;
+  return res;
+}
+ll g(ll R){return R/2;}
+ll h(ll L,ll R,ll D,ll U){
+  if(R<=0||U<=0)return 0;
+  if(L<=0)L=1;
+  if(D<=0)D=1;
+  return f(R,U)-f(L-1,U)-f(R,D-1)+f(L-1,D-1);
+}
+ll x(ll L,ll R){
+  if(L<=0)L=1;
+  if(R<=0)R=1;
+  return g(R)-g(L-1);
+}
+{
+  ll@(L,R,D,U);
+  ll x1=0,x2=0,y1=0,y2=0,z=0;
+  if(D<=0<=U)x1=x(L,R),x2=x(-R,-L);
+  if(L<=0<=R)y1=x(D,U),y2=x(-U,-D);
+  if((D<=0<=U)&&(L<=0<=R))z=1;
+  wt(h(L,R,D,U)+h(-R,-L,D,U)+h(-R,-L,-U,-D)+h(L,R,-U,-D)+x1+x2+y1+y2+z);
+}
