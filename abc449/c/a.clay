@@ -1,0 +1,18 @@
+int C[1d6+1][26];
+int T[1d6+1][26];
+{
+  int@(N,L,R);
+  string@S;
+  S.insert(S.begin(),'_');
+  rep(i,1,N+1){
+    int c=S[i]-'a';
+    C[i][c]++;
+  }
+  rep(i,1,2*N+1)rep(c,26)T[i][c]=T[i-1][c]+C[i][c];
+  ll res=0;
+  rep(i,1,N+1){
+    int c=S[i]-'a';
+    res+=T[i+R][c]-T[i+L-1][c];
+  }
+  wt(res);
+}
