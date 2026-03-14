@@ -1,0 +1,13 @@
+int@(H,W,Q);
+rep(Q){
+  int@type;
+  if(type==1){
+    int@R;
+    wt(W*R);
+    H-=R;
+  }else{
+    int@C;
+    wt(H*C);
+    W-=C;
+  }
+}
