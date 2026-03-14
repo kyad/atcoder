@@ -1,0 +1,4 @@
+ll@(N,T,C,D),@W[N];
+int cnt=0;
+rep(i,N)if(W[i]>=T)cnt++;
+wt(min(C,D)*cnt);
