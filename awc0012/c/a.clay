@@ -1,0 +1,10 @@
+int@(N,K,M),@(H[N],P[N]);
+VI A,B;
+rep(i,N){if(H[i])A.push_back(P[i]);else B.push_back(P[i]);}
+if(A.size()<M||B.size()<K-M)wt(-1),exit(0);
+ll res=0;
+sort(A.begin(),A.end(),greater<int>());
+sort(B.begin(),B.end(),greater<int>());
+rep(i,M)res+=A[i];
+rep(i,K-M)res+=B[i];
+wt(res);
