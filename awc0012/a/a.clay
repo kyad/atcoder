@@ -1,0 +1,4 @@
+int@N,@T,@H[N],@C[N];
+ll res=0;
+rep(i,N)if(H[i]<=T)res+=C[i];
+wt(res);
