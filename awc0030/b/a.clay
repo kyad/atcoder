@@ -1,0 +1,1 @@
+ll@N,@M,@(P[N],T[N]),I=2d9;rep(j,M){ll@K,m=I,n=I;rep(K){ll@S--;if(T[S])n<?=P[S];else m<?=P[S];}wt(m!=I&&n!=I?m+n:-1);}
