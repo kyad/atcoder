@@ -1,0 +1,1 @@
+int@N,@K,@S[N],v[N],l[N],r=0,M=runLength(N,S,v,l);rep(j,M)if(v[j]&&l[j]>=K)r++;wt(r);
