@@ -1,0 +1,11 @@
+// https://atcoder.jp/contests/awc0030/editorial/17729
+int C[1d6+1],M=1d6;
+ll D[1d6+1];
+{
+  int@N,@A[N];
+  rep(i,N)C[A[i]]++;
+  rep(g,1,M+1)for(int h=g;h<=M;h+=g)D[g]+=C[h];
+  ll res=-1;
+  rep(g,1,M+1)res>?=D[g]*g;
+  wt(res);
+}
