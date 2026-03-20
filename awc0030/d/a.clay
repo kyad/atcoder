@@ -1,0 +1,24 @@
+int@N,@T[N]--;
+int v[N];v[0..N-1]=-1;
+int loop[N];loop[0..N-1]=-1;
+bool visited[N];visited[0..N-1]=false;
+auto dfs=[&T,&v,&loop,&visited](auto dfs,int u)->void{
+  visited[u]=true;
+  if(visited[T[u]]){
+    if(v[T[u]]==-1){
+      v[u]=T[u];
+      loop[u]=1;
+    }else{
+      v[u]=v[T[u]];
+    }
+    return;
+  }
+  dfs(dfs,T[u]);
+  v[u]=v[T[u]];
+  loop[u]=loop[T[u]]+1;
+  return;
+};
+rep(u,N)if(!visited[u])dfs(dfs,u);
+int res[N];
+rep(u,N)res[u]=loop[v[u]];
+wt(res(N));
