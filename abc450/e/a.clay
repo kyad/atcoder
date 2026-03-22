@@ -1,0 +1,35 @@
+string@X,@Y,YX="_"+Y+X;
+int@Q;
+VLL S;
+S.push_back(0);
+S.push_back(X.size());
+S.push_back(Y.size());
+for(;;){
+  int n=S.size();
+  ll nx=S[n-1]+S[n-2];
+  S.push_back(nx);
+  if(nx>1d18)break;
+}
+S[1]=0;
+int N=S.size();
+ll A[N][26];
+for(char c:X)A[1][c-'a']++;
+for(char c:Y)A[2][c-'a']++;
+rep(i,3,N)rep(a,26)A[i][a]=A[i-1][a]+A[i-2][a];
+auto f=[&](ll k,char c)->ll{
+  if(k==0)return 0;
+  set<int>is;
+  while(k>S[3]){
+    int i=prev(upper_bound(S.begin(),S.end(),k))-S.begin();
+    is.insert(i);
+    k-=S[i];
+  }
+  ll res=0;
+  for(int i:is)res+=A[i][c-'a'];
+  for(int i=1;i<=k;i++)if(YX[i]==c)res++;
+  return res;
+};
+rep(Q){
+  ll@L,@R;char@C;
+  wt(f(R,C)-f(L-1,C));
+}
