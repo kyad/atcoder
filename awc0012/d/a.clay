@@ -1,0 +1,19 @@
+int@N,@M;
+VS S(N);
+rep(y,N)rd(S[y]);
+ll dist[N][M];dist[0..N-1][0...M-1]=ll_inf;dist[0][0]=0;
+priority_queue<tuple<ll,int,int>,vector<tuple<ll,int,int>>,greater<tuple<ll,int,int>>>pq;
+dist[0][0]=0;pq.push(make_tuple(0,0,0));
+int dy[4]={0,1,0,-1},dx[4]={1,0,-1,0};
+while(!pq.empty()){
+  auto[distu,y,x]=pq.top();pq.pop();
+  if(distu>dist[y][x])continue;
+  rep(k,4){
+    int ny=y+dy[k],nx=x+dx[k];
+    if(0<=ny<N&&0<=nx<M){
+      ll cost=(S[ny][nx]=='#'?1:0);
+      if(distu+cost<dist[ny][nx])dist[ny][nx]=distu+cost,pq.push(make_tuple(dist[ny][nx],ny,nx));
+    }
+  }
+}
+wt(dist[N-1][M-1]);
