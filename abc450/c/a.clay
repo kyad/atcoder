@@ -1,0 +1,27 @@
+int@H,@W;
+VS S(H);
+rep(y,H)rd(S[y]);
+int N=H*W;
+auto enc=[&W](int y,int x){return y*W+x;};
+unionFind uf('m',N);
+uf.init(N);
+int dy[4]={0,-1,0,1},dx[4]={1,0,-1,0};
+rep(y,H)rep(x,W)if(S[y][x]=='.'){
+  int z=enc(y,x);
+  rep(k,4){
+    int ny=y+dy[k],nx=x+dx[k];
+    if(0<=ny<H&&0<=nx<W&&S[ny][nx]=='.')uf.connect(z,enc(ny,nx));
+  }
+}
+set<int> st;
+rep(y,H)rep(x,W)if(S[y][x]=='.')st.insert(uf.get(enc(y,x)));
+rep(y,H){
+  if(S[y][0]=='.')st.erase(uf.get(enc(y,0)));
+  if(S[y][W-1]=='.')st.erase(uf.get(enc(y,W-1)));
+}
+rep(x,W){
+  if(S[0][x]=='.')st.erase(uf.get(enc(0,x)));
+  if(S[H-1][x]=='.')st.erase(uf.get(enc(H-1,x)));
+}
+int res=st.size();
+wt(res);
