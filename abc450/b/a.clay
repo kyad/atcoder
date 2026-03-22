@@ -1,0 +1,4 @@
+int@N,C[100][100];
+rep(i,N-1)rep(j,i+1,N)rd(C[i][j]);
+rep(a,N)rep(b,a+1,N)rep(c,b+1,N)if(C[a][c]>C[a][b]+C[b][c])wt("Yes"),exit(0);
+wt("No");
