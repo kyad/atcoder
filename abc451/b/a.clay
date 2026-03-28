@@ -1,0 +1,12 @@
+int p[100],n[100];
+{
+  int@N,@M;
+  rep(N){
+    int@A--,@B--;
+    p[A]++;
+    n[B]++;
+  }
+  rep(j,M){
+    wt(n[j]-p[j]);
+  }
+}
