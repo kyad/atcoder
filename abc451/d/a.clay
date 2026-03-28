@@ -1,0 +1,31 @@
+ll connect(ll a, ll b){
+  int d=Digit(b);
+  rep(d)a*=10;
+  return a+b;
+}
+{
+  int@N,M=10;
+  ll MX=1d9;
+  VVLL A(M+1);
+  rep(i,31){
+    ll n=1<<i;
+    if(n>MX)break;
+    int d=Digit(n);
+    A[d].push_back(n);
+  }
+  rep(d,1,M+1){
+    rep(a,1,d){
+      int b=d-a;
+      for(ll p:A[a])for(ll q:A[b]){
+          ll r=connect(p,q);
+          if(r<=MX)A[d].push_back(r);
+        }
+    }
+    sort(A[d].begin(),A[d].end());
+    auto res=unique(A[d].begin(),A[d].end());
+    A[d].erase(res,A[d].end());
+  }
+  VLL B;
+  rep(d,1,M+1)for(ll p:A[d])B.push_back(p);
+  wt(B[N-1]);
+}
