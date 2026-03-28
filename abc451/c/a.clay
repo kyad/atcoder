@@ -1,0 +1,17 @@
+multiset<int>st;
+int@Q;
+rep(Q){
+  int@type,@h;
+  if(type==1){
+    st.insert(h);
+  }else{
+    while(!st.empty()){
+      if(*st.begin()<=h){
+        st.erase(st.begin());
+      }else{
+        break;
+      }
+    }
+  }
+  wt((int)st.size());
+}
