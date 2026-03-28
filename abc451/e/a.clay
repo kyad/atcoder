@@ -1,0 +1,38 @@
+int@N;
+int A[N][N];A[0..N-1][0..N-1]=0;
+vector<tuple<int,int,int>>As;
+int i,j;
+rep(i,N)rep(j,i+1,N){
+  rd(A[i][j]);
+  A[j][i]=A[i][j];
+  As.push_back(make_tuple(A[i][j],i,j));
+}
+sort(As.begin(), As.end());
+unionFind uf('w',N,1);
+uf.init();
+vector<vector<int>>G(N);
+for(auto[A,i,j]:As){
+  if(uf.get(i)!=uf.get(j)){
+    G[i].push_back(j);
+    G[j].push_back(i);
+    uf.connect(i,j);
+  }
+}
+rep(i,N){
+  queue<int> todo;
+  int dist[N];dist[0..N-1]=-1;
+  dist[i]=0;
+  todo.push(i);
+  while(!todo.empty()){
+    int u=todo.front();
+    todo.pop();
+    for(int v:G[u]){
+      if(dist[v]<0){
+        dist[v]=dist[u]+A[u][v];
+        todo.push(v);
+      }
+    }
+  }
+  rep(j,N)if(A[i][j]!=dist[j])wt("No"),exit(0);
+}
+wt("Yes");
