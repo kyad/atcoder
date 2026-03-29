@@ -1,0 +1,10 @@
+ll@N,@K,@A[N];
+segtree_Point_Maxval<ll>t;
+t.malloc(N,0);
+t.setN(N,1,0);
+t[0]=A[0];
+t.build();
+rep(i,1,N){
+  t.change(i,t.getMaxVal(max(0,i-K),i)+A[i]);
+}
+wt(t[N-1]);
