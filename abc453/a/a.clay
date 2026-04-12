@@ -1,0 +1,7 @@
+int@N;
+string@S;
+while(!S.empty()){
+  if(*S.begin()=='o')S.erase(S.begin());
+  else break;
+}
+wt(S);
