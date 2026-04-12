@@ -1,0 +1,1 @@
+ll@T,@X,p=1e9;rep(t,T+1){ll@A;if(abs(p-A)>=X)wt(t,A),p=A;}
