@@ -1,0 +1,44 @@
+int@H,@W,y,x,k;
+VS S(H);
+rep(y,H)rd(S[y]);
+int K=4;
+const int dy[4] = {0, -1, 0, +1};
+const int dx[4] = {+1, 0, -1, 0};
+int dp[K][H][W]; dp[0..K-1][0...H-1][0....W-1]=int_inf;
+int sy,sx,gy,gx;
+rep(y,H)rep(x,W){if(S[y][x]=='S')sy=y,sx=x;else if(S[y][x]=='G')gy=y,gx=x;}
+queue<tuple<int,int,int>>q;
+rep(k,K)dp[k][sy][sx]=0,q.push(make_tuple(sy,sx,k));
+while(!q.empty()){
+  auto[y,x,k]=q.front();q.pop();
+  rep(nk,K){
+    if(S[y][x]=='o'){if(nk!=k)continue;}
+    else if(S[y][x]=='x'){if(nk==k)continue;}
+    int ny=y+dy[nk],nx=x+dx[nk];
+    if(ny<0||ny>=H||nx<0||nx>=W||S[ny][nx]=='#')continue;
+    if(dp[nk][ny][nx]<int_inf)continue;
+    dp[nk][ny][nx]=dp[k][y][x]+1;
+    q.push(make_tuple(ny,nx,nk));
+  }
+}
+int gk=-1,dist;
+rep(k,K)if(dp[k][gy][gx]<int_inf)gk=k,dist=dp[k][gy][gx],break;
+if(gk==-1)wt("No"),exit(0);
+wt("Yes");
+string T,D="RULD";
+y=gy,x=gx,k=gk;
+while(dist>=1){
+  T.push_back(D[k]);
+  int py=y-dy[k],px=x-dx[k],pk=-1;
+  rep(l,K){
+    if(S[py][px]=='o'){if(k!=l)continue;}
+    else if(S[py][px]=='x'){if(k==l)continue;}
+    int ppy=py-dy[l],ppx=px-dx[l];
+    if(ppy<0||ppy>=H||ppx<0||ppx>=W||S[ppy][ppx]=='#')continue;
+    if(dp[l][py][px]==dist-1)pk=l,break;
+  }
+  y=py,x=px,k=pk;
+  dist--;
+}
+reverse(T.begin(), T.end());
+wt(T);
