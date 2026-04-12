@@ -1,0 +1,1 @@
+ll@N,@L[N],M=1<<N,r=0,n;rep(b,M){n=0;double x=.5,y;rep(i,N){y=x+((b>>i&1)?1:-1)*L[i];if(x*y<0)n++;x=y;}r>?=n;}wt(r);
