@@ -1,0 +1,1 @@
+ll@N,@A[N],@B[N],r=0;rep(i,N)r+=abs(A[i]-B[i]);wt(r);

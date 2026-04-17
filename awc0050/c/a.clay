@@ -1,0 +1,1 @@
+map<ll,ll>d;stack<ll>s;ll@N,x=0,i=1;rep(N){string@S;if(S=="PUT"){ll@c;s.push(c);x^=c;}else if(S=="LOOK"){if(!d.contains(x))wt(-1);else wt(d[x]);d[x]=i;i++;}else{x^=s.top();s.pop();}}

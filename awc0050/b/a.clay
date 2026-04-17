@@ -1,0 +1,2 @@
+priority_queue<pair<ll,ll>>q;ll@N,@K,@(A[N],B[N]),r=0;rep(i,N)q.push(make_pair(B[i],A[i]));while(!q.empty()){auto[b,a]=q.top();q.pop();ll k=a/b;
+ll now=min(k,K)*b;r+=now;K-=min(k,K);if(K==0)break;ll r=a%b;if(r>0)q.push(make_pair(r,r));}wt(r);
