@@ -1,0 +1,26 @@
+int@(N,M,K);
+vector<vector<pair<int,ll>>>graph(N);
+rep(j,M){
+  int@U--,@V--;ll@W;
+  graph.at(U).push_back(make_pair(V,W));
+  graph.at(V).push_back(make_pair(U,W));
+}
+VLL D(N,0);
+rep(K){int@L--;rd(D[L]);}
+VLL dist(N,ll_inf);
+using g=greater<pair<ll,int>>;
+priority_queue<pair<ll,int>,vector<pair<ll,int>>,g>pq;
+int s=0;
+dist.at(s)=D[s];
+pq.push(make_pair(dist[s],s));
+while(!pq.empty()) {
+  auto[distu,u]=pq.top();pq.pop();
+  if(distu>dist[u])continue;
+  for(auto[v,cost]:graph[u]){
+    if(distu+cost+D[v]<dist[v]){
+      dist[v]=distu+cost+D[v];
+      pq.push(make_pair(dist[v],v));
+    }
+  }
+}
+wt(dist[N-1]);
