@@ -1,0 +1,17 @@
+int E[50][18];
+ll dp[1<<18];
+{
+  int@N,@M,@C[N];
+  rep(i,N)rep(j,M)rd(E[i][j]);
+  int M2=1<<M;
+  dp[1..M2-1]=ll_inf;
+  rep(bit,M2){
+    rep(i,N){
+      int nbit=bit;
+      rep(j,M)if(E[i][j])nbit|=(1<<j);
+      ll ncost=dp[bit]+C[i];
+      dp[nbit]<?=ncost;
+    }
+  }
+  wt(dp[M2-1]==ll_inf?-1:dp[M2-1]);
+}
