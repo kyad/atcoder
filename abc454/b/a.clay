@@ -1,0 +1,1 @@
+ll C[100];{ll@N,@M;rep(i,N){int@F--;C[F]++;}wt(max(C(M))==1?"Yes":"No");wt(min(C(M))>0?"Yes":"No");}

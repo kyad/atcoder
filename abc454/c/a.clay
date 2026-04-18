@@ -1,0 +1,1 @@
+ll dist[3d5];{ll@N,@M;vector<vector<int>>graph(N);rep(j,M){ll@A--,@B--;graph.at(A).push_back(B);}queue<int> todo;;dist[1..N]=-1;todo.push(0);while(!todo.empty()){ll u=todo.front();todo.pop();for(int v:graph[u]){if(dist[v]<0)dist[v]=dist[u]+1,todo.push(v);}}ll r=0;rep(u,N)if(dist[u]>=0)r++;wt(r);}
