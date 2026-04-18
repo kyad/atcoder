@@ -1,0 +1,36 @@
+#define pb push_back
+int@T;
+rep(T){
+  int@(N,A--,B--);
+  if(N%2==1)wt("No"),continue;
+  if((A+B)%2==0)wt("No"),continue;
+  wt("Yes");
+  string S;
+  rep(Y,0,N,2){
+    if(Y+1<A){
+      rep(N-1)S.pb('R');
+      S.pb('D');
+      rep(N-1)S.pb('L');
+      S.pb('D');
+    }else if(Y==A||Y+1==A){
+      bool vis[2][N];vis[0..1][0...N-1]=false;vis[0][0]=vis[A-Y][B]=true;
+      int y=0,x=0;
+      do{
+        if(vis[0][x]&&vis[1][x]){
+          S.pb('R');x++;
+        }else if(y==0){
+          S.pb('D');y++;
+        }else{
+          S.pb('U');y--;
+        }
+        vis[y][x]=true;
+      }while(y!=1||x!=N-1);
+    }else{
+      S.pb('D');
+      rep(N-1)S.pb('L');
+      S.pb('D');
+      rep(N-1)S.pb('R');
+    }
+  }
+  wt(S);
+}
