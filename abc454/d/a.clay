@@ -1,0 +1,25 @@
+string f(string &S){
+  stack<char>st;
+  for(char i:S){
+    st.push(i);
+    while(st.size()>=4){
+      char d=st.top();st.pop();
+      char c=st.top();st.pop();
+      char b=st.top();st.pop();
+      char a=st.top();st.pop();
+      if(a=='('&&b=='x'&&c=='x'&&d==')')st.push(b),st.push(c);
+      else st.push(a),st.push(b),st.push(c),st.push(d),break;
+    }
+  }
+  string res;
+  while(!st.empty())res.push_back(st.top()),st.pop();
+  reverse(res.begin(), res.end());
+  return res;
+}
+{
+  int@T;
+  rep(T){
+    string@A,@B;
+    wt(f(A)==f(B)?"Yes":"No");
+  }
+}
