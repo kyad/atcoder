@@ -1,0 +1,8 @@
+int@N,prev=-100,now=0,res=-1;
+rep(N){
+  int@A;
+  if(prev<A)now++,res>?=now;
+  else now=1;
+  prev=A;
+}
+wt(res);
