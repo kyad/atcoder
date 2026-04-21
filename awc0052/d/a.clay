@@ -1,0 +1,24 @@
+int S[100][16];
+{
+  int@N,@M,K[M],R[M];
+  rep(j,M){
+    rd(K[j]);
+    rep(k,K[j])rd(S[j][k]--);
+    rd(R[j]);
+  }
+  int N2=1<<N;
+  int res=int_inf;
+  rep(bit,N2){
+    bool ok=true;
+    rep(j,M){
+      int now=0;
+      rep(k,K[j]){
+        int i=S[j][k];
+        if(bit>>i&1)now=1;
+      }
+      if(now!=R[j])ok=false;
+    }
+    if(ok)res<?=__builtin_popcount(bit);
+  }
+  wt(res);
+}
