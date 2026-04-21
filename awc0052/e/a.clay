@@ -1,0 +1,30 @@
+// https://atcoder.jp/contests/awc0052/editorial/18705
+
+int@N,@M;ll@F,@R[N];
+vector<vector<pair<int,ll>>> graph(N);
+rep(M){
+  int@U--,@V--;ll@W;
+  graph.at(U).push_back(make_pair(V,W));
+  graph.at(V).push_back(make_pair(U,W));
+}
+int N2=1<<N;
+VVLL dp(N,VLL(N2,-ll_inf));
+int s0=1<<0;
+dp[0][s0]=F+R[0];
+priority_queue<tuple<ll,int,int>> q;
+q.push(make_tuple(dp[0][s0],0,s0));
+while(!q.empty()){
+  auto[f,u,s]=q.top();q.pop();
+  if(f<dp[u][s])continue;
+  for(auto[v,w]:graph.at(u)){
+    if(f<w)continue;
+    ll nf=f-w;
+    int ns=s|(1<<v);
+    if((s>>v&1)==0)nf+=R[v];
+    if(nf>dp[v][ns])dp[v][ns]=nf,q.push(make_tuple(nf,v,ns));
+  }
+}
+ll ans=*max_element(dp[N-1].begin(),dp[N-1].end());
+if(ans==-ll_inf)ans=-1;
+wt(ans);
+
