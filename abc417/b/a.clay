@@ -1,0 +1,8 @@
+int@N,@M;
+VI@A(N);
+rep(M){
+  int@B;
+  auto it=find(A.begin(),A.end(),B);
+  if(it!=A.end())A.erase(it);
+}
+wt(A);
