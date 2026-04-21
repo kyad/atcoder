@@ -1,0 +1,12 @@
+int@N,@S,@(V[N],C[N]);
+int M=1d4;
+int dp[N+1][M+1];dp[0..N][0...M]=-int_inf;dp[0][0]=0;
+rep(i,N)rep(j,M+1){
+  dp[i+1][j]>?=dp[i][j];
+  if(j+C[i]<=M){
+    dp[i+1][j+C[i]]>?=dp[i][j]+V[i];
+  }
+}
+int res=dp[N][S];
+if(res<0)res=-1;
+wt(res);
