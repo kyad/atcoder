@@ -1,0 +1,3 @@
+int@(N,A,B);
+string@S;
+wt(S.substr(A,N-A-B));
