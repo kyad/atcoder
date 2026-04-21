@@ -1,0 +1,4 @@
+// https://atcoder.jp/contests/awc0052/editorial/19089
+int@N;ll@K;
+K%=N;
+rep(i,N)wt((i-K+N)%N+1);
