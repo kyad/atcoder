@@ -1,0 +1,1 @@
+ll@H,@W,r=0,o;VS@S(H);rep(A,H)rep(B,A,H)rep(C,W)rep(D,C,W){o=1;rep(i,A,B+1)rep(j,C,D+1)if(S[i][j]!=S[A+B-i][C+D-j])o=0;r+=o;}wt(r);
