@@ -1,0 +1,22 @@
+int res[3d5];
+{
+  int@N,@Q;
+  int prev[2*N];
+  int next[2*N];
+  rep(i,N)prev[i]=N+i,next[N+i]=i,prev[N+i]=-1,next[i]=-1;
+  rep(Q){
+    int@C--,@P--,cp=prev[C];
+    next[cp]=-1;
+    prev[C]=P;
+    next[P]=C;
+  }
+  rep(i,N){
+    int a=next[N+i];
+    while(true){
+      if(a==-1)break;
+      res[i]++;
+      a=next[a];
+    }
+  }
+  wt(res(N));
+}
