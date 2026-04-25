@@ -1,0 +1,1 @@
+ll@(A,B,C);wt(A!=B&&B==C?"Yes":"No");
