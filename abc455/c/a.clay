@@ -1,0 +1,17 @@
+int@N,@K;
+map<int,int>count;
+ll res=0;
+rep(i,N){
+  int@A;
+  count[A]++;
+  res+=A;
+}
+ll B[N],M=0;
+for(auto[a,cnt]:count){
+  B[M++]=(ll)a*cnt;
+}
+rsortA(M,B);
+rep(j,min(M,K)){
+  res-=B[j];
+}
+wt(res);
