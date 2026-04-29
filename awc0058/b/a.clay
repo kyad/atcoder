@@ -1,0 +1,12 @@
+int@(N,M,K);
+ll@H[N];
+rep(i,N)if(H[i]<K)H[i]=0;
+ll sum=sum(H(M));
+ll res=sum;
+rep(l,1,N-M+1){
+  int r=l+M-1;
+  sum-=H[l-1];
+  sum+=H[r];
+  res>?=sum;
+}
+wt(res);

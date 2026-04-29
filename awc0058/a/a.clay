@@ -1,0 +1,4 @@
+int@(N,P,T,C),@S[N-1];
+if(P>=T)wt(0),exit(0);
+rep(i,N-1)if(S[i]>=T)wt(C),exit(0);
+wt(-1);

@@ -1,0 +1,12 @@
+int imos[1d6+1];
+{
+  int@(N,M,K);
+  rep(j,M){
+    int@L--,@R;
+    imos[L]++,imos[R]--;
+  }
+  rep(i,N)imos[i+1]+=imos[i];
+  int res=0;
+  rep(i,N)if(imos[i]>=K)res++;
+  wt(res);
+}

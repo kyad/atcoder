@@ -1,0 +1,23 @@
+int@N,@K,@A[N];
+int res=-1,mn=int_inf,mx=-int_inf;
+multiset<int>ms;
+int r=0;
+rep(l,N){
+  while(1){
+    int nr=r+1;
+    if(nr>=N+1)break;
+    int nmn=min(mn,A[nr-1]);
+    int nmx=max(mx,A[nr-1]);
+    if(nmx-nmn>K)break;
+    r=nr;
+    mn=nmn,mx=nmx,ms.insert(A[r-1]);
+  }
+  res>?=r-l;
+  if(l==r)r++;
+  else{
+    ms.erase(ms.find(A[l]));
+    if(ms.empty())mn=int_inf,mx=-int_inf;
+    else mn=*ms.begin(),mx=*ms.rbegin();
+  }
+}
+wt(res);
