@@ -1,0 +1,1 @@
+int@N,@Q,M=N-1,@P[M]--,B[M];rep(i,M)B[i]=i+1;graph g;g.setEdge(N,M,P,B);HLD h;h.init(g);rep(Q){ll@X--,@Y--;wt(h.lca(X,Y)+1);}
