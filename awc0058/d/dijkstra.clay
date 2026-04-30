@@ -1,0 +1,1 @@
+int@(N,M,K--),U[M],V[M];ll C[M];rep(j,M)rd(U[j]--,V[j]--,C[j]);wgraph<ll>g;g.setEdge(N,M,U,V,C);ll r=g.getDistT(0,K,ll_inf)+g.getDistT(N-1,K,ll_inf);wt(r>=ll_inf?-1:r);
