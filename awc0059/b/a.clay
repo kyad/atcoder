@@ -1,0 +1,20 @@
+int@(N,M,K),@T[M],@S[N][M];
+VI is;
+rep(i,N){
+  bool ok = true;
+  rep(j,M)if(S[i][j]<T[j])ok=false;
+  if(ok)is.push_back(i);
+}
+VI res;
+if((int)is.size()<=K){
+  for(int i:is)wt(i+1);
+}else{
+  int P[N];P[0..N-1]=0;
+  rep(i,N)rep(j,M)P[i]+=S[i][j];
+  VI ps;
+  for(int i:is)ps.push_back(P[i]);
+  sort(ps.begin(), ps.end());
+  reverse(ps.begin(), ps.end());
+  int B=ps[K-1];
+  for(int i:is)if(P[i]>=B)wt(i+1);
+}
