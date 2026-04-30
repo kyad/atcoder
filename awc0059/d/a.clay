@@ -1,0 +1,15 @@
+int V[1d6+1],F[1d6+1];
+ll res;
+{
+  int@N;
+  string@S;
+  rep(i,N){
+    if(S[i]=='V'||S[i]=='B')V[i+1]++;
+    if(S[i]=='F'||S[i]=='B')F[i+1]++;
+  }
+  rep(i,N)V[i+1]+=V[i],F[i+1]+=F[i];
+  map<int,int>mp;
+  rep(i,N+1)mp[V[i]-F[i]]++;
+  for(auto[d,c]:mp)res+=(ll)c*(c-1)/2;
+  wt(res);
+}
