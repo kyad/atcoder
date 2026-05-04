@@ -1,0 +1,9 @@
+int@N;
+ll@S[N],@C[N-1];
+ll res=S[0],now=S[0];
+rep(i,N-1) {
+  now-=C[i];
+  now+=S[i+1];
+  res>?=now;
+}
+wt(res);
