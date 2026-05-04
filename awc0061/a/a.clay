@@ -1,0 +1,9 @@
+int@N,@M;
+int count[M];count[0..M-1]=0;
+rep(i,N){
+  int@K;
+  rep(k,K)count[rd_int()-1]++;
+}
+int res=0;
+rep(j,M)if(count[j]==N)res++;
+wt(res);
