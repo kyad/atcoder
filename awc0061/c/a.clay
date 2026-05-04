@@ -1,0 +1,6 @@
+int@N,@K,A[N+1];
+rep(i,1,N+1)rd(A[i]);
+ll dp[N+1],mx[N+1];dp[0]=mx[0]=0;
+rep(i,1,K+2)dp[i]=A[i],mx[i]=max(mx[i-1],dp[i]);
+rep(i,K+2,N+1)dp[i]=mx[i-K-1]+A[i],mx[i]=max(mx[i-1],dp[i]);
+wt(max(dp(N+1)));
