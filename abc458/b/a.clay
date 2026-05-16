@@ -1,0 +1,8 @@
+int@H,@W,res[H][W];res[0..H-1][0...W-1]=0;
+int dy[4]={0,-1,0,1};
+int dx[4]={1,0,-1,0};
+rep(y,H)rep(x,W)rep(k,4){
+  int ny=y+dy[k],nx=x+dx[k];
+  if(0<=ny<H&&0<=nx<W)res[y][x]++;
+}
+rep(y,H)wt(res[y](W));
