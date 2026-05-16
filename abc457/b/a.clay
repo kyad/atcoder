@@ -1,0 +1,9 @@
+int@N;
+VVI A(N);
+rep(i,N){
+  int@L;
+  A[i].resize(L);
+  rep(j,L)rd(A[i][j]);
+}
+int@X--,@Y--;
+wt(A[X][Y]);
