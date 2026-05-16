@@ -1,0 +1,5 @@
+string@S;
+int N=S.size();
+ll res=0;
+rep(i,N)if(S[i]=='C')res+=min(i+1,N-i);
+wt(res);
