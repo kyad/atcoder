@@ -1,0 +1,17 @@
+int@N,L[N];ll@K--;
+VVI A(N);
+rep(i,N){
+  rd(L[i]);
+  A[i].resize(L[i]);
+  rep(j,L[i])rd(A[i][j]);
+}
+ll@C[N];
+rep(i,N) {
+  if(K<C[i]*L[i]){
+    K%=L[i];
+    wt(A[i][K]);
+    exit(0);
+  }else{
+    K-=C[i]*L[i];
+  }
+}
