@@ -1,0 +1,4 @@
+string S="HelloWorld";
+int@X--;
+S.erase(X,1);
+wt(S);
