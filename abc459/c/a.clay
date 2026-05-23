@@ -1,0 +1,21 @@
+int@N,@Q;
+int MX=300000;
+int C[N];C[0..N-1]=0;
+int D[MX+1];D[0..MX]=0;D[0]=N;
+int mn=0;
+rep(Q){
+  int@type;
+  if(type==1){
+    int@x--;
+    C[x]++;
+    D[C[x]]++;
+    if(D[C[x]]==N){
+      mn=C[x];
+    }
+  }else{
+    int@y;
+    int res=0;
+    if(mn+y<=MX)res=D[mn+y];
+    wt(res);
+  }
+}
