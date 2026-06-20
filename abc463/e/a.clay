@@ -1,0 +1,28 @@
+int A[8d5],B[8d5];
+ll C[8d5];
+{
+  int@N,@M,m=0;
+  ll@Y,res[2d5];
+  rep(j,M){
+    int@U--,@V--;ll@T;
+    A[m]=U;
+    B[m]=V;
+    C[m++]=T;
+    A[m]=V;
+    B[m]=U;
+    C[m++]=T;
+  }
+  rep(u,N) {
+    ll@X;
+    A[m]=u;
+    B[m]=N;
+    C[m++]=X;
+    A[m]=N;
+    B[m]=u;
+    C[m++]=X+Y;
+  }
+  wgraph<ll>g;
+  g.setDirectEdge(N+1,m,A,B,C);
+  g.getDist(0,res,(ll)-1);
+  wt(res[1..N-1]);
+}
