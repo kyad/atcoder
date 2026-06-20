@@ -1,0 +1,10 @@
+int Y[2d6],X[2d6];
+{
+  int@H,@W,m=0;
+  rep(y,H){
+    string@S;
+    rep(x,W)if(S[x]=='T')Y[m]=y,X[m++]=x;
+  }
+  wt(m);
+  rep(j,m)wt(Y[j]+1,X[j]+1);
+}
