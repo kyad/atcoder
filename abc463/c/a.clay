@@ -1,0 +1,13 @@
+int@N,@(H[N],L[N]);
+map<int,int>mp;
+mp[0]=max(H(N));
+multiset<int>ms;
+rep(i,N)ms.insert(H[i]);
+rep(i,N){
+  ms.erase(ms.find(H[i]));
+  int mx=i==N-1?-1:*ms.rbegin();int l=L[i];
+  if(mp.contains(l))mp[l]<?=mx;
+  else mp[l]=mx;
+}
+int@Q;
+rep(Q)wt(prev(mp.upper_bound(rd_int()))->second);
