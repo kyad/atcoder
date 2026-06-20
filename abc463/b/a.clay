@@ -1,0 +1,6 @@
+int@N;char@X;
+rep(N){
+  string@S;
+  if(S[X-'A']=='o')wt("Yes"),exit(0);
+}
+wt("No");
