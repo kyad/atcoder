@@ -1,0 +1,6 @@
+ll@N,@D,res=0;
+rep(N){
+  ll@A,@B;
+  res+=A+B*D;
+}
+wt(res);
