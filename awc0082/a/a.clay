@@ -1,0 +1,8 @@
+int@N,@M;
+ll@K,@A[N],res=0;
+rep(M){
+  int@S,@P--;
+  ll@D;
+  res+=(S?max(A[P]-K,0):A[P])*D;
+}
+wt(res);
