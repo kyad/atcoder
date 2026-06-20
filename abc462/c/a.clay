@@ -1,0 +1,10 @@
+int@N,@(X[N],Y[N]);
+sortA(N,X,Y);
+int ymin=int_inf;
+int res=0;
+rep(i,N){
+  int y=Y[i];
+  if(y<ymin)res++;
+  ymin<?=y;
+}
+wt(res);

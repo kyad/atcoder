@@ -1,0 +1,16 @@
+int@N,@D;
+int@(S[N],T[N]);
+int M=1d6;
+int in[M+1],out[M+1];in[0..M]=0;out[0..M]=0;
+rep(i,N){
+  if(T[i]-S[i]<D)continue;
+  in[S[i]]++;
+  out[T[i]]++;
+}
+ll L=0,res=0;
+rep(t,1,M-D+1){
+  L+=in[t];
+  res+=L*(L-1)/2;
+  L-=out[t+D];
+}
+wt(res);

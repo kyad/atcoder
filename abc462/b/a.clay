@@ -1,0 +1,7 @@
+int@N;
+VVI res(N);
+rep(i,N){
+  int@K,@A[K]--;
+  rep(k,K)res[A[k]].push_back(i+1);
+}
+rep(i,N)wt((int)res[i].size(),res[i]);
