@@ -1,0 +1,17 @@
+int@N;ll@M,@(X[N],C[N]);
+int r=0;
+ll sum=0,res=0;
+rep(l,N){
+  while(true){
+    int nr=r+1;
+    if(nr>=N+1)break;
+    ll nsum=sum+C[nr-1];
+    if(nsum>M)break;
+    r=nr;
+    sum=nsum;
+  }
+  if(r>=1)res>?=X[r-1]-X[l];
+  if(l==r)r++;
+  else sum-=C[l];
+}
+wt(res);
