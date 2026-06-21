@@ -1,0 +1,1 @@
+ll@N;string@S;ll r=0;rep(d,1,N){ll I[N+1],M=0;I[M++]=-1;rep(i,N-d)if(S[i]!=S[i+d])I[M++]=i;I[M++]=N-d;rep(i,1,M-1)r+=(I[i]-I[i-1])*(I[i+1]-I[i]);}wt(r);
