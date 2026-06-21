@@ -1,0 +1,1 @@
+ll@N,@V[N],dp[N][N],j;dp[0..N-1][0...N-1]=-4d48;dp[0..N-1][0..N-1]=V[0..N-1];rep(d,1,N)rep(i,N-d)j=i+d,dp[i][j]>?=max(V[i]-dp[i+1][j],V[j]-dp[i][j-1]);wt(dp[0][N-1]);
