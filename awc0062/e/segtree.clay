@@ -1,0 +1,1 @@
+ll E[2d6+1];{ll@N,@Q,@(X[N],B[N]),S=1d6,M=2d5,y;rep(i,N){y=X[i]+S;E[y-B[i]+1]++;E[y+1]-=2;E[y+B[i]+1]++;}rep(2)rep(y,1,2*S+1)E[y]+=E[y-1];segtree_Point_Maxval<ll>t;t.malloc(M+2);t.setN(M+2,0,0);rep(x,M+2)t[x]=E[x+S];t.build();rep(Q){ll@L,@R;wt(t.getMaxVal(L,R+1));}}
