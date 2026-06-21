@@ -1,0 +1,1 @@
+ll@(N,M,K),@A[N],S=0;rep(i,N)S+=A[i]/K;wt(M<=S?"Yes":"No");
