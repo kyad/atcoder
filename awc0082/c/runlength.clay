@@ -1,0 +1,14 @@
+char val[1d7];
+int len[1d7];
+{
+  int@A,@B;
+  string@T;
+  int cnt=Count(T.size(),T.c_str(),'R');
+  if(cnt!=A)wt(-1),exit(0);
+  int N=runLength(T.size(),(char*)T.c_str(),val,len),res=0;
+  rep(i,N){
+    if(i==0)continue;
+    if(val[i]=='R')res++;
+  }
+  wt(res);
+}
