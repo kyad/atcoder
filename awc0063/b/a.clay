@@ -1,0 +1,8 @@
+ll@N,@M,@P[N];
+__int128 now=P[0];
+if(now>M)wt("No"),exit(0);
+rep(i,1,N){
+  now=lcm(now,(__int128)P[i]);
+  if(now>M)wt("No"),exit(0);
+}
+wt("Yes");
