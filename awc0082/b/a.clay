@@ -1,0 +1,32 @@
+int@N,@K,@M;
+ll@X,@Y[M];
+K<?=N;
+VI b(N);
+rep(i,N)b[i]=X>>i&1;
+auto rotate=[&](VI&b)->VI{
+  VI res;
+  for(int i=1;i<N;i++)res.push_back(b[i]);
+  res.push_back(1);
+  return res;
+};
+while(K>0){
+  if(b[0])break;
+  b=rotate(b);
+  K--;
+}
+VVI e(M,VI(N));
+rep(j,M)rep(i,N)e[j][i]=Y[j]>>i&1;
+auto f=[&](int left,int right,VI&a)->ll{
+  int L=right-left;
+  ll res=0;
+  for(int l=0;l<L;l++)if(a[left+l]==1)res+=1LL<<l;
+  return res;
+};
+ll res=0;
+rep(i,N-1){
+  ll A=f(0,i+1,b),B=f(i+1,N,b);
+  rep(j,M)A+=f(0,i+1,e[j]),B+=f(i+1,N,e[j]);
+  ll now=A+B;
+  res>?=now;
+}
+wt(res);
