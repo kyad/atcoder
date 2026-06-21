@@ -1,0 +1,1 @@
+ll@(N,K,G),@(D[N],T[N]),S=SUM(T(K)),M=S;rep(l,N-K+1){M>?=S;if(l==N-K)break;S+=T[l+K]-T[l];}wt(G+SUM(T(N))-M);
