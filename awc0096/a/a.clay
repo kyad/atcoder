@@ -1,0 +1,1 @@
+ll@N,@S;rep(N-1){ll@B,@A;S=max(S+B,A);}ll@B;wt(S+B);
