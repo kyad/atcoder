@@ -1,0 +1,6 @@
+int@N,res=0,mx=-1;
+rep(i,N){
+  int@A,@B,now=A+B;
+  if(now>mx)res=i+1,mx=now;
+}
+wt(res);
