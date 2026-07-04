@@ -1,0 +1,1 @@
+ll@N,@M;unionFind u('m',N+1,1);rep(j,M){ll@U,@V;u(U,V);}ll@Q;rep(Q){ll@S;wt(u.size(S));}
