@@ -1,0 +1,12 @@
+int@(N,L,Q);
+VS@S(N);
+auto f=[&](string&A,string&B){for(int i=0;i<L;i++)A[i]=(A[i]=='1'||B[i]=='1')?'1':'0';};
+rep(Q){
+  string T(L,'0');
+  int@M;
+  rep(j,M){
+    int@c--;
+    f(T,S[c]);
+  }
+  wt(T);
+}
