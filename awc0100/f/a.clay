@@ -1,0 +1,14 @@
+ll@N,@K,@V[N],r=0,sum=0,res=0;
+rep(l,N){
+  while(true){
+    ll nr=r+1;
+    if(nr>=N+1)break;
+    ll nsum=sum+V[nr-1];
+    if(nsum>=K)break;
+    r=nr,sum=nsum;
+  }
+  res+=N-r;
+  if(l==r)r++;
+  else sum-=V[l];
+}
+wt(res);
