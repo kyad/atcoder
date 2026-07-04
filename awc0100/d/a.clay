@@ -1,0 +1,5 @@
+ll@N,@A[N],L[N],R[N],res=ll_inf;
+L[0]=A[0];rep(i,1,N)L[i]=A[i]+L[i-1];
+R[N-1]=A[N-1];for(i=N-2;i>=0;i--)R[i]=A[i]+R[i+1];
+rep(k,N-1)res<?=abs(L[k]-R[k+1]);
+wt(res);
