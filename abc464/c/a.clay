@@ -1,0 +1,14 @@
+int@N,@M,@(A[N],D[N],B[N]);
+map<int,int>mp;
+rep(i,N)mp[A[i]]++;
+vector<vector<pair<int,int>>>events(M+1);
+rep(i,N)events[D[i]].push_back(make_pair(i,B[i]));
+rep(j,1,M+1){
+  for(auto[i,b]:events[j]){
+    int a=A[i];
+    mp[a]--;
+    if(mp[a]==0)mp.erase(a);
+    mp[b]++;
+  }
+  wt((int)mp.size());
+}
