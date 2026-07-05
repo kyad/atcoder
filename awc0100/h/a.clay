@@ -1,0 +1,29 @@
+int@N,@M,@B[N],res[N],k=0,visited[N];visited[0..N-1]=0;
+vector<priority_queue<pair<int,int>>>graph(N);
+rep(j,M){
+  int@U--,@V--;
+  graph.at(U).push(make_pair(B[V],V));
+}
+vector<pair<int,int>>bu(N);
+bu[0]=make_pair(int_inf,0);
+rep(u,1,N)bu[u]=make_pair(B[u],u);
+sort(bu.begin(),bu.end());
+reverse(bu.begin(),bu.end());
+for(auto[_,start]:bu){
+  if(visited[start])continue;
+  int u=start;
+  while(true){
+    visited[u]=1;
+    res[k++]=u+1;
+    int nu=-1;
+    while(!graph[u].empty()){
+      int v=graph[u].top().second;
+      graph.at(u).pop();
+      if(visited[v])continue;
+      else{nu=v;break;}
+    }
+    if(nu==-1)break;
+    u=nu;
+  }
+}
+wt(res(N));
