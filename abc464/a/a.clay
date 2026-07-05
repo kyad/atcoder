@@ -1,0 +1,4 @@
+string@S;
+int e=count(S.begin(),S.end(),'E');
+int w=count(S.begin(),S.end(),'W');
+wt(e>w?"East":"West");
