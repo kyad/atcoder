@@ -1,0 +1,24 @@
+int@(H,W,Q),sw=0;
+if(W<H)swap(W,H),sw=1;
+VI R(Q),C(Q);
+char X[Q];
+rep(qi,Q)rd(R[qi],C[qi],X[qi]);
+if(sw)swap(R,C);
+VS S(H,string(W,'A'));
+int fx[H];fx[0..H-1]=-1;
+for(qi=Q-1;qi>=0;qi--){
+  int r=R[qi]-1,c=C[qi]-1;
+  rep(y,r+1){
+    if(c<=fx[y])continue;
+    rep(x,fx[y]+1,c+1)S[y][x]=X[qi];
+    fx[y]=c;
+  }
+}
+if(sw){
+  rep(y,W){
+    rep(x,H)cout<<S[x][y];
+    cout<<'\n';
+  }
+}else{
+  rep(y,H)wt(S[y]);
+}
