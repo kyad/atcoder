@@ -1,0 +1,24 @@
+int@N,@M,@S--;
+fenwick<int> t;
+t.walloc(2*N);
+t.init(2*N);
+rep(i,2*N)t.add(i,1);
+int mod=N-1;
+int x=S;
+rep(j,M){
+  int @D;
+  D%=mod;
+  if(D==0)D=mod;
+  t.add(x,-1);
+  t.add(x+N,-1);
+  int left=x,right=2*N-1;
+  while(right-left>1){
+    int mid=(left+right)/2;
+    int sum=t.range(x+1,mid);
+    if(sum>=D)right=mid;
+    else left=mid;
+  }
+  x=right%N;
+  mod--;
+}
+wt(x+1);
