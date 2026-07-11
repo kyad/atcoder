@@ -1,0 +1,32 @@
+int@N,@Q,V[N];
+map<int,vector<pair<string,int>>>mp;
+VS S(N);
+rep(i,N){rd(S[i],V[i]);mp[V[i]].push_back({S[i],i});};
+map<int,string>memo;
+rep(Q){
+  int@X;
+  if(mp.contains(X)){
+    VS res;
+    for(auto[name,i]:mp[X])res.push_back(name);
+    wt(res);
+  }else{
+    if(memo.contains(X))wt(memo[X]),continue;
+    vector<pair<string,int>>cand;
+    auto upper=mp.upper_bound(X);
+    auto lower=mp.lower_bound(X);
+    auto L=[&](){for(auto[name,i]:prev(lower)->second)cand.push_back({name,i});};
+    auto U=[&](){for(auto[name,i]:upper->second)cand.push_back({name,i});};
+    if(N==1)cand.push_back({S[0],0});
+    else if(upper==mp.end())L();
+    else if(lower==mp.begin())U();
+    else {
+      int u=upper->first-X,l=X-prev(lower)->first;
+      if(u<=l)U();
+      if(l<=u)L();
+    }
+    string res;
+    int mn=int_inf;
+    for(auto[name,i]:cand)if(i<mn)res=name,mn=i;
+    wt(memo[X]=res);
+  }
+}
