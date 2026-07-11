@@ -1,0 +1,3 @@
+ll@(N,M,K),@C[N+M];
+rsortA(N+M,C);
+wt(sum[i,0,K](C[i]));
