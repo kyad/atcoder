@@ -1,0 +1,1 @@
+ll@N,@K,@A[N],l=0,r=4d18,X;while(r-l>1){X=(l+r)/2;__int128 n=0;rep(i,N)n+=max(0,X-A[i]);if(n<=K)l=X;else r=X;}rep(i,N)if(A[i]<l)K-=l-A[i],A[i]=l;sortA(N,A);rep(i,K)A[i]++;mint a=1;rep(i,N)a*=A[i];wt(a);
