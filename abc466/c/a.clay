@@ -1,0 +1,19 @@
+//interactive
+int@N,r=0;
+ll res=0;
+rep(l,N){
+  while(true){
+    int nr=r+1;
+    if(nr>=N+1)break;
+    if(l==nr-1)r=nr,continue;
+    wt('?',l+1,nr-1+1);
+    flush(cout);
+    string@a;
+    if(a=="No")break;
+    r=nr;
+  }
+  res+=max(0,r-l-1);
+  if(l==r)r++;
+}
+wt('!',res);
+flush(cout);
