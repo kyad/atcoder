@@ -1,0 +1,2 @@
+int@N,@X[N];
+wt(max(X(N))<0?"Yes":"No");
