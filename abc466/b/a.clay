@@ -1,0 +1,3 @@
+int@N,@M,res[M];res[0..M-1]=-1;
+rep(N){int@C--,@S;res[C]>?=S;}
+wt(res(M));
