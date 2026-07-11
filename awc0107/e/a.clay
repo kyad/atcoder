@@ -1,0 +1,26 @@
+using S = pair<long long, int>;
+using F = long long;
+S segtree_rh_merge(S a, S b){ return min(a, b); }
+S segtree_rh_apply(F f, S x){ return {f+x.first, x.second}; }
+F segtree_rh_compose(F f, F g){ return f+g; }
+{
+  int@(T,N,D,Q),@(L[N],R[N]);
+  segtree_rh<S,F>t;
+  t.malloc(T-D+1);
+  t.setN(T-D+1,0,0);
+  rep(i,T-D+1)t[i]={0,i};
+  t.build();
+  rep(i,N)if(R[i]-L[i]<=D)t.change(max(0,R[i]-D),min(T-D,L[i])+1,1);
+  rep(Q){
+    int@type;
+    if(type==1){
+      int@(i--,l,r);
+      if(R[i]-L[i]<=D)t.change(max(0,R[i]-D),min(T-D,L[i])+1,-1);
+      L[i]=l,R[i]=r;
+      if(R[i]-L[i]<=D)t.change(max(0,R[i]-D),min(T-D,L[i])+1,1);
+    }else{
+      S res=t.get(0,T-D+1);
+      wt(res.second,res.first);
+    }
+  }
+}
