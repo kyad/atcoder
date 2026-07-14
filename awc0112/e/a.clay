@@ -1,0 +1,1 @@
+ll@N,@K,@P[N],T=inversion(N,P);wt(T>=K?T-K:(K-T)%2);

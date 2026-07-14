@@ -1,0 +1,1 @@
+ll@N,@K,@P[N],M=1d4;mint dp[N+1][M+1];dp[0..N][0...M]=0;dp[0][0]=1;rep(i,N)rep(j,M+1){dp[i+1][j]+=dp[i][j];if(j-P[i]>=0)dp[i+1][j]+=dp[i][j-P[i]];}wt(dp[N][K]);

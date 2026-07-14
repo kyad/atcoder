@@ -1,0 +1,1 @@
+ll@N,@K,r=0,n=0;rep(i,N){ll@A;if(A>=K)r>?=++n;else n=0;}wt(r);
