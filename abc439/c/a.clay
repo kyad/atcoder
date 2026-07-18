@@ -1,0 +1,10 @@
+int@N,M=1d7;
+VI A,count(M+1,0),res;
+for(int i=1;i*i<=M;i++)A.push_back(i*i);
+for(int a:A)for(int b:A){
+  if(a>=b)continue;
+  if(a+b<=M)count[a+b]++;
+}
+rep(n,1,N+1)if(count[n]==1)res.push_back(n);
+wt((int)res.size());
+wt(res);
