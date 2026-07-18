@@ -1,0 +1,5 @@
+int@D,@F,day=F-1;
+while(true){
+  if(day>=D)wt(day-D+1),break;
+  day+=7;
+}
