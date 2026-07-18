@@ -1,0 +1,13 @@
+int@N,@Q;
+VLL@A(N);
+sort(A.begin(),A.end());
+auto f=[&](ll Z){return prev(upper_bound(A.begin(),A.end(),Z))-A.begin();};
+rep(Q){
+  ll@X,@Y,l=0,r=ll_inf;
+  auto check=[&](ll Z){return Y<=(Z-X+1-(f(Z)-f(X-1)));};
+  while(r-l>1){
+    ll mid=(l+r)/2;
+    if(check(mid))r=mid; else l=mid;
+  }
+  wt(r);
+}
