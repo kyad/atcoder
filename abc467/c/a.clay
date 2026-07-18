@@ -1,0 +1,16 @@
+ll f(int N, int M, ll*_A, ll*_B, int add0){
+  ll A[N],B[N-1];
+  rep(i,N)A[i]=_A[i];
+  rep(i,N-1)B[i]=_B[i];
+  ll res=add0;
+  A[0]+=add0;
+  rep(i,1,N){
+    if((A[i]+A[i-1])%2==B[i-1]){}
+    else{A[i]++,res++;}
+  }
+  return res;
+}
+{
+  ll@N,@M,@A[N],@B[N-1];
+  wt(min(f(N,M,A,B,0),f(N,M,A,B,1)));
+}
