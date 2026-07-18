@@ -1,0 +1,3 @@
+int@N,@T[N],z[N];
+sortA_index(N,T,z);
+wt(++z(3));
