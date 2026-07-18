@@ -1,0 +1,21 @@
+int@N;
+stack<int>st;
+auto check=[&](){
+  if(st.size()<=3)return false;
+  int a=st.top();st.pop();
+  int b=st.top();st.pop();
+  int c=st.top();st.pop();
+  int d=st.top();st.pop();
+  if(a==b==c==d)return true;
+  st.push(d);
+  st.push(c);
+  st.push(b);
+  st.push(a);
+  return false;
+};
+rep(N){
+  int@A;
+  st.push(A);
+  while(true)if(!check())break;
+}
+wt((int)st.size());
