@@ -1,0 +1,20 @@
+int@(N,M,L),U[M],V[M],ok[N];ok[0..N-1]=0;
+ll@S,@T,C[M];
+rep(j,M)rd(U[j]--,V[j]--,C[j]);
+wgraph<ll>g;
+g.setDirectEdge(N,M,U,V,C);
+queue<tuple<int,int,ll>>q;
+q.push({0,0,0});
+while(!q.empty()){
+  auto[u,l,cost]=q.front();
+  if(l==L&&S<=cost<=T)ok[u]=1;
+  q.pop();
+  rep(j,g.es[u]){
+    int v=g.edge[u][j];
+    ll c=g.cost[u][j];
+    if(l+1<=L&&cost+c<=T)q.push({v,l+1,cost+c});
+  }
+}
+VI res;
+rep(u,N)if(ok[u])res.push_back(u+1);
+wt(res);
