@@ -1,0 +1,8 @@
+int@Q,vol=0,play=0;
+rep(Q){
+  int@A;
+  if(A==1)vol++;
+  else if(A==2)if(vol>=1)vol--;
+  else play=1-play;
+  wt(play&&vol>=3?"Yes":"No");
+}
