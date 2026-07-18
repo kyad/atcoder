@@ -1,0 +1,12 @@
+int@N,@M,res=int_inf;
+string@S,@T;
+rep(i,N-M+1){
+  int now=0;
+  rep(j,M){
+    int a=S[i+j]-'0';
+    int b=T[j]-'0';
+    now+=a>=b?a-b:10+a-b;
+  }
+  res<?=now;
+}
+wt(res);
