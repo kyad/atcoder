@@ -1,0 +1,17 @@
+int f(int N) {
+  int res=0;
+  while(N>0){
+    int a=N%10;
+    res+=a*a;
+    N/=10;
+  }
+  return res;
+}
+{
+  int@N;
+  rep(10000){
+    N=f(N);
+    if(N==1)wt("Yes"),exit(0);
+  }
+  wt("No");
+}
