@@ -1,0 +1,8 @@
+ll@(N,K,X),@A[N],res=-1,drink=0,sake=0;
+sortA(N,A);
+rrep(i,N){
+  drink++;
+  if(i<K)sake+=A[i];
+  if(sake>=X)res=drink,break;
+}
+wt(res);
