@@ -1,0 +1,23 @@
+ll f(VI&A){
+  int N=A.size();
+  map<int,int>P,R;
+  ll res=0;
+  rep(i,N){
+    if(A[i]%5==0){
+      int k=A[i]/5;
+      ll now=(ll)P[k]*R[k];
+      res+=now;
+    }
+    if(A[i]%7==0)P[A[i]/7]++;
+    if(A[i]%3==0)R[A[i]/3]++;
+  }
+  return res;
+}
+{
+  int@N;
+  VI@A(N);
+  ll res1=f(A);
+  reverse(A.begin(),A.end());
+  ll res2=f(A);
+  wt(res1+res2);
+}
