@@ -1,0 +1,9 @@
+int@N,@M,@(A[M]--,B[M]--);
+graph g;
+g.setEdge(N,M,A,B);
+ll res[N];
+rep(i,N){
+  ll n=N-1-g.es[i];
+  res[i]=n*(n-1)*(n-2)/(3*2);
+}
+wt(res(N));
