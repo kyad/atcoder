@@ -1,0 +1,11 @@
+int@N;
+using P=pair<int,int>;
+vector<P>AB(N);
+rep(i,N){int@a,@b;AB[i]={a,b};}
+sort(AB.begin(),AB.end(),[](auto l,auto r){
+  if(l.first!=r.first){return l.first<r.first;}
+  else{return l.second>r.second;}
+});
+int B[N];
+rep(i,N)B[i]=AB[i].second;
+wt(LIS_length(N,B));
