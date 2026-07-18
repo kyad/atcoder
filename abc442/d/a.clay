@@ -1,0 +1,16 @@
+int@N,@Q,@A[N];
+fenwick<ll>t;
+t.walloc(N,1);
+rep(i,N)t.add(i,A[i]);
+rep(Q){
+  int@type--;
+  if(!type){
+    int@x--;
+    ll a=t.range(x,x),b=t.range(x+1,x+1);
+    t.add(x,-a+b);
+    t.add(x+1,a-b);
+  }else{
+    int@l--,@r--;
+    wt(t.range(l,r));
+  }
+}
