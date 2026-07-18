@@ -1,0 +1,1 @@
+string@S;wt(Count(S,'i')+Count(S,'j'));
