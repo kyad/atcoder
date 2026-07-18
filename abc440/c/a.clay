@@ -1,0 +1,21 @@
+int@T;
+rep(T){
+  int@N,@W;
+  VLL C;
+  rep(i,N){ll@c;C.push_back(c);}
+  if(N%(2*W)!=0){
+    int count=2*W-N%(2*W);
+    rep(i,count)C.push_back(0);
+  }
+  int M=C.size();
+  ll S[2*W];S[0..2*W-1]=0;
+  rep(j,M)S[j%(2*W)]+=C[j];
+  ll sum=SUM(S(W));
+  ll res=sum;
+  rep(l,1,2*W+1){
+    sum-=S[(l-1+2*W)%(2*W)];
+    sum+=S[(l+W-1+2*W)%(2*W)];
+    res<?=sum;
+  }
+  wt(res);
+}
