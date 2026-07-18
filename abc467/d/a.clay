@@ -1,0 +1,23 @@
+using lll = __int128;
+bool par(lll ax,lll ay,lll bx,lll by){return ax*by==ay*bx;}
+{
+  int@T;
+  rep(T){
+    ll@aPX,@aPY,@aQX,@aQY,@aRX,@aRY,@aSX,@aSY;
+    lll PX=aPX*2,PY=aPY*2,QX=aQX*2,QY=aQY*2,
+        RX=aRX*2,RY=aRY*2,SX=aSX*2,SY=aSY*2;
+    lll AX=QX-PX;
+    lll AY=QY-PY;
+    lll BX=SX-RX;
+    lll BY=SY-RY;
+    lll UX=-AY,UY = AX;
+    lll VX=-BY,VY = BX;
+    if(!par(UX,UY,VX,VY))wt("Yes"),continue;
+    lll NX=(PX+QX)/2,NY=(PY+QY)/2;
+    lll MX=(RX+SX)/2,MY=(RY+SY)/2;
+    if(NX==MX&&NY==MY)wt("Yes"),continue;
+    lll WX =NX-MX,WY=NY-MY;
+    if(par(UX,UY,WX,WY))wt("Yes"),continue;
+    wt("No");
+  }
+}
