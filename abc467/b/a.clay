@@ -1,0 +1,7 @@
+int@N,res=0;
+rep(N){
+  int@A,@B;
+  string@S;
+  if(S=="keep")res+=B-A;
+}
+wt(res);
