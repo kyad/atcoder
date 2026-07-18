@@ -1,0 +1,2 @@
+int@H,@W;
+wt(W*1d4>=25*H*H?"Yes":"No");
