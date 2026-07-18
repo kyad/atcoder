@@ -1,0 +1,13 @@
+ll@N,res=0,ofs=-N;
+string@S;
+fenwick<int>t;
+t.walloc(2*N+1,1);
+for(char c:S){
+  int a;
+  if(c=='A')ofs++,a=-ofs+1;
+  else if(c=='B')ofs--,a=-ofs-1;
+  else a=-ofs;
+  t.add(a,1);
+  res+=t.range(-ofs+1,2*N);
+}
+wt(res);
