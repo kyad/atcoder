@@ -1,0 +1,14 @@
+int@N,@M;
+string@S,@T;
+int A[26];A[0..25]=0;
+rep(i,N)A[S[i]-'a']++;
+rep(j,M)A[T[j]-'a']+=2;
+int@Q,count[4];
+rep(Q){
+  string@W,res="Unknown";
+  count[0..3]=0;
+  for(char c:W)count[A[c-'a']]++;
+  if(count[1]>=1&&count[2]==0&&count[0]==0)res="Takahashi";
+  else if(count[2]>=1&&count[1]==0&&count[0]==0)res="Aoki";
+  wt(res);
+}
