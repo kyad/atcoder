@@ -1,0 +1,10 @@
+int@N,board[N][N];board[0..N-1][0...N-1]=-1;
+int y=0,x=(N+1)/2-1;
+board[y][x]=1;
+rep(i,2,N*N+1){
+  int ny=(y-1+N)%N,nx=(x+1)%N;
+  if(board[ny][nx]>0)ny=(y+1)%N,nx=x;
+  board[ny][nx]=i;
+  y=ny,x=nx;
+}
+rep(y,N)wt(board[y](N));
