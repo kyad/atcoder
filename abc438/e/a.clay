@@ -1,0 +1,13 @@
+int@N,@Q,A[N+1];A[0]=0;
+rep(i,1,N+1)rd(A[i]);
+int K=32;
+int g[K][N+1];g[0..K-1][0...N]=0;
+ll h[K][N+1];h[0..K-1][0...N]=0;
+rep(x,1,N+1)g[0][x]=A[x],h[0][x]=x;
+rep(i,1,K)rep(x,1,N+1)g[i][x]=g[i-1][g[i-1][x]],h[i][x]=h[i-1][x]+h[i-1][g[i-1][x]];
+rep(Q){
+  int@T,@B,x=B;
+  ll res=0;
+  rep(i,K)if(T>>i&1)res+=h[i][x],x=g[i][x];
+  wt(res);
+}
