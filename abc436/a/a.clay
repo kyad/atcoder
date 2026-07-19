@@ -1,0 +1,3 @@
+int@N;
+string@S;
+wt(string(N-S.size(),'o')+S);
