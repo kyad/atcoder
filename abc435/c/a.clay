@@ -1,0 +1,7 @@
+int@N,@A[N],dp=A[0],res=1;
+rep(i,1,N){
+  if(dp<=i)break;
+  dp>?=A[i]+i;
+  res++;
+}
+wt(res);
