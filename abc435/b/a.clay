@@ -1,0 +1,9 @@
+int@N,@A[N],res=0;
+rep(l,N)rep(r,l,N){
+  ll sum=0;
+  rep(i,l,r+1)sum+=A[i];
+  int ok=1;
+  rep(i,l,r+1)if(sum%A[i]==0)ok=0;
+  if(ok)res++;
+}
+wt(res);
