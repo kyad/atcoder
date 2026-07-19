@@ -1,0 +1,9 @@
+int@(H,W,N),@A[H][W],C[91];C[0..90]=0;
+rep(i,N){int@B;C[B]=1;}
+int res=0;
+rep(y,H){
+  int now=0;
+  rep(x,W)if(C[A[y][x]])now++;
+  res>?=now;
+}
+wt(res);
