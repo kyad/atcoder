@@ -1,0 +1,17 @@
+ll @N,A[N+1],B[N+1],C[N+1],P[N+1],Q[N+1],R[N+1];
+P[0]=Q[0]=R[0]=0;
+rep(i,1,N+1)rd(A[i]);
+rep(i,1,N+1)rd(B[i]);
+rep(i,1,N+1)rd(C[i]);
+rep(i,1,N+1)P[i]=P[i-1]+A[i],Q[i]=Q[i-1]+B[i],R[i]=R[i-1]+C[i];
+segtree_Point_Maxval<ll>t;
+t.walloc(N+1,1);
+rep(i,1,N+1)t[i]=Q[i]-R[i];
+t.build();
+ll res=-4d18;
+rep(x,1,N-1){
+  ll mx=t.getMaxVal(x+1,N);
+  ll now=-P[0]+P[x]-Q[x]+mx+R[N];
+  res>?=now;
+}
+wt(res);
