@@ -1,0 +1,9 @@
+int@N,A[N],P[N];
+rep(u,N)A[u]=u,rd(P[u]),P[u]--;
+graph g;
+g.setEdge(N,N,A,P);
+int s[N],M=g.scc(s),sz[M];sz[0..M-1]=0;
+rep(u,N)sz[s[u]]++;
+ll res=0;
+rep(j,M)res+=(ll)sz[j]*(sz[j]-1)/2;
+wt(res);
