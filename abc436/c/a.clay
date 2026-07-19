@@ -1,0 +1,8 @@
+int@N,@M;
+set<pair<int,int>>st;
+rep(M){
+  int@R,@C,ok=1;
+  rep(y,R,R+2)rep(x,C,C+2)if(st.contains({y,x}))ok=0;
+  if(ok)rep(y,R,R+2)rep(x,C,C+2)st.insert({y,x});
+}
+wt((int)st.size()/4);
