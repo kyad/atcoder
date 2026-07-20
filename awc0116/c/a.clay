@@ -1,0 +1,25 @@
+int@N,@K,@H[N],l=0,res=0;
+while(l<N){
+  int mode=1,i=l,r;
+  while(true){
+    int ni=i+1;
+    if(ni>=N)break;
+    if(mode==1){
+      if(H[i]<H[ni])i=ni;
+      else if(H[i]==H[ni])mode=3,r=i,break;
+      else mode=2,i=ni;
+    }else{
+      if(H[i]<=H[ni])mode=3,r=i,break;
+      else i=ni;
+    }
+  }
+  if(mode!=3)r=N-1,mode=3;
+  int hmax=H[l],hmin=H[l];
+  rep(i,l+1,r+1){
+    if(H[i]>hmax)hmax=H[i];
+    if(H[i]<hmin)hmin=H[i];
+  }
+  if(hmax-hmin>=K)res>?=r-l+1;
+  l=(l==r)?r+1:r;
+}
+wt(res);
