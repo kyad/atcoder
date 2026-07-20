@@ -1,0 +1,1 @@
+ll@N,@K,@A[N],@B[N];rep(i,N)B[i]-=A[i];rsortA(N,B);wt(SUM(A(N))+SUM(B(K)));
