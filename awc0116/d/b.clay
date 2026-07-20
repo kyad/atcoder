@@ -1,0 +1,21 @@
+int@N,@M;
+ll@(W[N],T[N]),@P[M];
+vector<tuple<ll,int,int>>events(N+M);
+rep(i,N)events[i]={W[i],2,i};
+rep(j,M)events[N+j]={P[j],1,j};
+sort(events.begin(),events.end());
+reverse(events.begin(),events.end());
+using Q=pair<ll,int>;
+priority_queue<Q,vector<Q>,greater<Q>>pq;
+ll res=-1;
+for(auto[_,type,k]:events){
+  if(type==2)pq.push({T[k],k});
+  else {
+    if(pq.empty())wt(-1),exit(0);
+    auto[t,i]=pq.top();
+    pq.pop();
+    res>?=t;
+    pq.push({t+T[i],i});
+  }
+}
+wt(res);

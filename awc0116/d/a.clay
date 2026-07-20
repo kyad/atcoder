@@ -1,0 +1,1 @@
+ll@N,@M,@(W[N],T[N]),@P[M],r=0;vector<tuple<ll,ll,ll>>e(N+M);rep(i,N)e[i]={W[i],1,i};rep(j,M)e[N+j]={P[j],0,j};sort(e.begin(),e.end());reverse(e.begin(),e.end());using Q=pair<ll,ll>;priority_queue<Q,vector<Q>,greater<Q>>q;for(auto[_,m,k]:e){if(m)q.push({T[k],k});else{if(q.empty())wt(-1),exit(0);auto[t,i]=q.top();q.pop();r>?=t;q.push({t+T[i],i});}}wt(r);
