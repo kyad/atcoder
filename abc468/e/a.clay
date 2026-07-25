@@ -1,0 +1,12 @@
+#define MD 998244353
+int@N,@A[N];
+mint S[N+1];S[0]=0;
+rep(i,N)S[i+1]=S[i]+A[i];
+mint res=0,sum=0;
+rep(l,1,(N+1)/2+1){
+  int r=N+1-l;
+  sum+=S[r]-S[l-1];
+  res+=sum/l;
+  if(l!=r)res+=sum/r;
+}
+wt(res);
