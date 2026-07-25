@@ -1,0 +1,1 @@
+ll@(N,M,S),@A[N],@B[M],a=SUM(A(N)),b=SUM(B(M));wt(b<=a?-1:S/(b-a));
