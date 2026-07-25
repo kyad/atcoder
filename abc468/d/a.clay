@@ -1,0 +1,17 @@
+// https://atcoder.jp/contests/abc468/editorial/23736
+string@S;
+int N=S.size(),res=0;
+rep(k,2){
+  rep(i,N){
+    int cnt=0;
+    int l=i,r=i+k;
+    while(true){
+      if(l<0||r>=N)break;
+      cnt+=S[l]!=S[r];
+      if(cnt>=2)break;
+      res++;
+      l--;r++;
+    }
+  }
+}
+wt(res);
