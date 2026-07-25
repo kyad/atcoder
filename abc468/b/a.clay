@@ -1,0 +1,4 @@
+int@M,@D,dp[M];dp[0..M-1]=1;
+string@S;
+rep(j,M)if(S[j]=='G')rep(k,max(0,j-D),min(M,j+D+1))dp[k]=0;
+wt(SUM(dp(M)));
