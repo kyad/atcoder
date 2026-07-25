@@ -1,0 +1,5 @@
+int@N,res=0;
+vector<int>@P(N),@Q(N),A(N);
+iota(A.begin(),A.end(),1);
+do{if(P<A<Q)res++;}while(next_permutation(A.begin(),A.end()));
+wt(res);
