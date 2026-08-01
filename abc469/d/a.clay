@@ -1,0 +1,36 @@
+int@N,@M,@(A[M],B[M]);
+auto f=[&](int C){
+  int ok=1;
+  for(int j=1;j<M;j++){
+    if(C==A[j]||C==B[j]){}else{ok=0;break;}
+  }
+  if(ok){
+    vector<pair<int,int>>res;
+    for(int u=1;u<=N;u++) {
+      if(C!=u){
+        int mn=min(C,u);
+        int mx=max(C,u);
+        res.push_back(make_pair(mn,mx));
+      }
+    }
+    return res;
+  }
+  set<int>st;
+  int init=0;
+  for(int j=1;j<M;j++){
+    if(C==A[j]||C==B[j])continue;
+    if(!init){st.insert(A[j]),st.insert(B[j]),init=1;continue;}
+    if(st.empty())continue;
+    VI rm;
+    for(int u:st)if(u==A[j]||u==B[j]){}else{rm.push_back(u);}
+    for(int u:rm)st.erase(u);
+  }
+  vector<pair<int,int>>res;
+  for(int u:st)if(C!=u)res.push_back(make_pair(min(C,u),max(C,u)));
+  return res;
+};
+auto a=f(A[0]),b=f(B[0]);
+set<pair<int,int>>st;
+for(auto[u,v]:a)st.insert({u,v});
+for(auto[u,v]:b)st.insert({u,v});
+wt((int)st.size());
