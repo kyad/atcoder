@@ -1,0 +1,10 @@
+int@N,res=0;
+string@S;
+rep(i,N){
+  int now=1;
+  if(S[i]=='o')now=0;
+  if(i>=1&&S[i-1]=='o')now=0;
+  if(i<=N-2&&S[i+1]=='o')now=0;
+  res+=now;
+}
+wt(res);
