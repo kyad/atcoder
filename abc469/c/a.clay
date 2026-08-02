@@ -1,0 +1,10 @@
+int@N,to=0;
+string@S;
+rep(i,N){
+  while(true){
+    if(to==N)break;
+    if(S[to]=='o')to++,continue;
+    else to++,break;
+  }
+  wt(to);
+}
