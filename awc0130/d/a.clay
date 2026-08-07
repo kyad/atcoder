@@ -1,0 +1,153 @@
+int H,W;
+int board[1002][1002];
+int imos[1002][1002];
+int enc(int y,int x){return (y-1)*W+x-1;}
+void dec(int z,int &y,int &x){y=z/W+1,x=z%W+1;}
+int L=0;
+int top[1000000];
+int bot[1000000];
+int l[1000000];
+int r[1000000];
+
+struct UnionFind {
+  vector<int> parent, _size;
+  int _num_unions;
+  // UnonFindが範囲の時の左端と右端
+  vector<int> _left;
+  vector<int> _right;
+
+  vector<int> _top;
+  vector<int> _bottom;
+  // 追加
+
+  UnionFind(int n) : parent(n, -1), _size(n, 1), _num_unions(n) {
+    _left.resize(n, 0);
+    _right.resize(n, 0);
+    _top.resize(n, 0);
+    _bottom.resize(n, 0);
+    for (int i = 0; i < n; i++) {
+      int x = i % W;
+      int y = i / W;
+      _left.at(i) = x;
+      _right.at(i) = x;
+      _top.at(i) = y;
+      _bottom.at(i) = y;
+    }
+    // 追加
+  }
+
+  int root(int x) {
+    if (parent[x] == -1) {
+      return x;
+    } else {
+      //return root(parent[x]);  // O(logN)
+      return parent[x] = root(parent[x]);  // O(alpha(N))
+    }
+  }
+
+  bool issame(int x, int y) {
+    return root(x) == root(y);
+  }
+
+  bool unite(int x, int y) {
+    x = root(x);
+    y = root(y);
+    if (x == y) {
+      return false;
+    }
+    if (_size[x] < _size[y]) {
+      swap(x, y);  // Union by size
+    }
+    // xが新しい親
+    parent[y] = x;
+    _size[x] += _size[y];
+    _num_unions--;
+
+    // 範囲の更新
+    int nleft = min(_left.at(x), _left.at(y));
+    _left.at(x) = nleft;
+    int nright = max(_right.at(x), _right.at(y));
+    _right.at(x) = nright;
+    int ntop = min(_top.at(x), _top.at(y));
+    _top.at(x) = ntop;
+    int nbottom = max(_bottom.at(x), _bottom.at(y));
+    _bottom.at(x) = nbottom;
+    // 追加
+
+    return true;
+  }
+
+  int size(int x) {
+    return _size[root(x)];
+  }
+
+  int num_unions() {  // unionの数(ひとまとまりになっているグループの数)を返す
+    return _num_unions;
+  }
+
+  int left(int x) {
+    return _left[root(x)];
+  }
+
+  int right(int x) {
+    return _right[root(x)];
+  }
+
+  int top(int x) {
+    return _top[root(x)];
+  }
+
+  int bottom(int x) {
+    return _bottom[root(x)];
+  }
+};
+
+{
+  rd(H,W);
+  int@N;
+  rep(N){
+    int@(A,B,C,D);
+    board[A][C]++;
+    board[A][D+1]--;
+    board[B+1][C]--;
+    board[B+1][D+1]++;
+  }
+  rep(y,1,H+1)rep(x,1,W+1)board[y][x+1]+=board[y][x];
+  rep(x,1,W+1)rep(y,1,H+1)board[y+1][x]+=board[y][x];
+  rep(y,1,H+1)rep(x,1,W+1)board[y][x]%=2;
+  imos[0..H+2][0...W+1]=board[0..H+2][0...W+1];
+  rep(y,1,H+1)rep(x,1,W+1)imos[y][x]+=imos[y][x-1];
+  rep(x,1,W+1)rep(y,1,H+1)imos[y][x]+=imos[y-1][x];
+  UnionFind uf(H*W);
+  const int dy[4] = {0, -1, 0, +1};
+  const int dx[4] = {+1, 0, -1, 0};
+  rep(y,1,H+1)rep(x,1,W+1){
+    if(!board[y][x])continue;
+    int z=enc(y,x);
+    rep(k,4){
+      int ny=y+dy[k],nx=x+dx[k];
+      if(ny<=0||ny>=H+1||nx<=0||nx>=W+1||!board[ny][nx])continue;
+      int nz=enc(ny,nx);
+      uf.unite(z,nz);
+    }
+  }
+  rep(z,H*W){
+    int y,x;
+    dec(z,y,x);
+    if(!board[y][x])continue;
+    if(z==uf.root(z)){
+      top[L]=uf.top(z)+1;
+      bot[L]=uf.bottom(z)+1;
+      l[L]=uf.left(z)+1;
+      r[L++]=uf.right(z)+1;
+    }
+  }
+  int@M;
+  rep(M){
+    int@(P,Q,R,S);
+    int res0=imos[Q][S]-imos[Q][R-1]-imos[P-1][S]+imos[P-1][R-1];
+    int res1=0;
+    rep(k,L)if(P<=top[k]&&bot[k]<=Q&&R<=l[k]&&r[k]<=S)res1++;
+    wt(res0,res1);
+  }
+}
