@@ -1,0 +1,10 @@
+int@N,@M;
+string@S;
+int T=count(S.begin(),S.end(),'T'),A=N-T;
+rep(j,M){
+  int@R--;
+  if(S[R]=='T')S[R]='A',T--,A++;
+  else S[R]='T',T++,A--;
+  if(T==0||A==0)wt(j+1),exit(0);
+}
+wt(-1);
