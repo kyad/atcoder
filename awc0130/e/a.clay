@@ -1,0 +1,25 @@
+ll N,K,D,H[2d5];
+void f(){
+  if(K==1)return;
+  multiset<int>ms;
+  ms.insert(H[0]);
+  rep(i,1,K-1){
+    int mn=*ms.begin();
+    if(H[i]>mn+D)H[i]-=(H[i]-(mn+D));
+    ms.insert(H[i]);
+  }
+  rep(i,N-K+1){
+    int ni=i+K-1;
+    int mn=*ms.begin();
+    if(H[ni]>mn+D)H[ni]-=(H[ni]-(mn+D));
+    ms.insert(H[ni]);
+    ms.erase(ms.find(H[i]));
+  }
+}
+{
+  rd(N,K,D,H(N));
+  f();
+  rep(i,N/2)swap(H[i],H[N-1-i]);
+  f();
+  wt(SUM(H(N)));
+}
