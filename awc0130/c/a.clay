@@ -1,0 +1,1 @@
+mint d[2d5][100];{ll@N,@K,@A[N];d[0][0]=1;rep(i,N)rep(j,K)d[i+1][j]+=d[i][j],d[i+1][(j+A[i])%K]+=d[i][j];wt(d[N][0]-1);}

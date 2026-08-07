@@ -1,0 +1,8 @@
+int@N,@K,@A[N];
+mint dp[N+1][K];dp[0..N][0...K-1]=0;
+dp[0][0]=1;
+rep(i,N)rep(j,K){
+  dp[i+1][j]+=dp[i][j];
+  dp[i+1][(j+A[i])%K]+=dp[i][j];
+}
+wt(dp[N][0]-1);
