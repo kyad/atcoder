@@ -1,0 +1,15 @@
+int@N,@P[N],@Q[N];
+int l=0;
+while(true){
+  if(P[l]!=Q[l])break;
+  l++;
+  if(l>=N)wt("Yes"),exit(0);
+}
+int r=N-1;
+while(true){
+  if(P[r]!=Q[r])break;
+  r--;
+}
+rep(k,(r-l+1)/2)swap(P[l+k],P[r-k]);
+rep(i,N)if(P[i]!=Q[i])wt("No"),exit(0);
+wt("Yes");
