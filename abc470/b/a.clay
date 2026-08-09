@@ -1,0 +1,3 @@
+int@N,@C[N]--,count[N];count[0..N-1]=0;
+rep(i,N)count[C[i]]++;
+wt(N-MAX(count(N)));
