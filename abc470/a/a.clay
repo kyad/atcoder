@@ -1,0 +1,2 @@
+int@N;
+rep(i,1,N+1){if(i%3)wt(i);else wt("Fizz");}
