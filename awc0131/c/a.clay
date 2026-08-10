@@ -1,0 +1,3 @@
+int@N,@H[N],res=1,mx=H[N-1];
+rrep(i,N-1)if(H[i]>=mx)mx=H[i],res++;
+wt(res);
