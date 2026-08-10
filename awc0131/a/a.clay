@@ -1,0 +1,7 @@
+int@N,n=N,res=0;
+rep(N) {
+  int@F;
+  n-=min(n,F);
+  if(n>=1)n--,res++;
+}
+wt(res);
