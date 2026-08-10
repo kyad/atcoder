@@ -1,0 +1,20 @@
+ll dp[20][10][154][2][2];
+{
+  ll@N++,@K,S[20],D=Digit(N,S);
+  dp[0][0][0][0][0]=1;
+  rep(i,D)rep(j,10)rep(k,K+1)rep(l,2)rep(m,2){
+    int nj_mx=9;
+    if(l==0)nj_mx=S[D-1-i];
+    rep(nj,0,nj_mx+1){
+      int ni=i+1;
+      int nk=m?k+abs(j-nj):0;
+      if(nk>K)continue;
+      int nl=l?1:!(S[D-1-i]==nj);
+      int nm=m?1:nj!=0;
+      dp[ni][nj][nk][nl][nm]+=dp[i][j][k][l][m];
+    }
+  }
+  ll res=0;
+  rep(j,10)res+=dp[D][j][K][1][1];
+  wt(res);
+}
