@@ -1,0 +1,15 @@
+int@N,@Q;
+map<string,VI>is;
+rep(i,N){
+  string@S;
+  if(!is.contains(S))is[S].push_back(-1);
+  is[S].push_back(i);
+}
+for(auto[S,v]:is)v.push_back(int_inf);
+rep(Q){
+  int@L--,@R--;
+  string@T;
+  if(!is.contains(T))wt(0),continue;
+  int res=prev(upper_bound(is[T].begin(),is[T].end(),R))-lower_bound(is[T].begin(),is[T].end(),L)+1;
+  wt(res);
+}
