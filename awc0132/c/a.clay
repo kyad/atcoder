@@ -1,0 +1,1 @@
+ll@N,@Q,@(P[N],D[N]);rep(i,1,N)D[i]+=D[i-1],P[i]-=D[i-1],if(P[i]>P[i-1])P[i]=P[i-1];VLL A(N);rep(i,N)A[i]=-P[i];rep(Q){ll@S;wt((ll)(upper_bound(A.begin(),A.end(),-S)-A.begin()));}

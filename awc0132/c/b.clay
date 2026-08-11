@@ -1,0 +1,10 @@
+ll@N,@Q,@(P[N],D[N]),S[N];
+S[0]=D[0];rep(i,1,N)S[i]=S[i-1]+D[i];
+rep(i,1,N)P[i]-=S[i-1];
+rep(i,1,N)if(P[i]>P[i-1])P[i]=P[i-1];
+VLL A(N);
+rep(i,N)A[i]=-P[i];
+rep(Q){
+  ll@S,res=upper_bound(A.begin(),A.end(),-S)-A.begin();
+  wt(res);
+}
