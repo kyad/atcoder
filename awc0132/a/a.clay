@@ -1,0 +1,1 @@
+ll@N,@P,r=0;rep(i,N){ll@H;if(P>=H)P-=H,r++;else P+=H;}wt(r);
