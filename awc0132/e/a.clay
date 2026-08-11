@@ -1,0 +1,1 @@
+ll S[2d5];{ll@N,@K,@W[N],M=2d6,p;unordered_map<int,VI>m;rep(i,N)m[W[i]].push_back(i);unionFind u('m',N,1);for(auto[W,is]:m){if(W>=K)rep(i,1,is.size())u(is[0],is[i]);}rep(k,K,M){p=-1;rep(l,k,M,k){if(m.contains(l)){if(p==-1)p=m[l][0];else u(p,m[l][0]);}}}rep(i,N)S[u(i)]+=W[i];wt(MAX(S(N)));}

@@ -1,0 +1,18 @@
+ll S[2d5];
+{
+  int@N,@K,@W[N],M=MAX(W(N));
+  unordered_map<int,VI>mp;
+  rep(i,N)mp[W[i]].push_back(i);
+  unionFind uf('m',N,1);
+  for(auto[W,is]:mp){if(W>=K)rep(i,1,is.size())uf(is[0],is[i]);}
+  rep(k,K,M+1){
+    int prev=-1;
+    rep(l,k,M+1,k){
+      if(!mp.contains(l))continue;
+      if(prev==-1)prev=mp[l][0],continue;
+      uf(prev,mp[l][0]);
+    }
+  }
+  rep(i,N)S[uf(i)]+=W[i];
+  wt(MAX(S(N)));
+}
