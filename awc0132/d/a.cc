@@ -1,0 +1,88 @@
+#include <algorithm>
+#include <cassert>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+/**
+ * 最長増加部分列 (Longest Increasing Subsequence, LIS)
+ * 計算量 O(NlogN)
+ */
+template<class T> pair<vector<int>, vector<T> > lis(const vector<T>& X) {
+  const int INF = 1e9+1;
+  int N = X.size();
+  // dp[i]: 長さiの単調増加列の末尾の数字の最小値 (0<=i<=N)
+  vector<T> dp(N + 1, INF);
+  dp[0] = -INF;
+  // len[i]: iまで見た時の最大の単調増加列の長さ (0<=i<N)
+  vector<int> len(N, 0);
+  // value[i]: iまで見た時の最大の単調増加列の末尾の数字の最小値 (0<=i<N)
+  vector<T> value(N, 0);
+  for (int i = 0; i < N; i++) {
+    vector<int>::iterator it = lower_bound(dp.begin(), dp.end(), X.at(i));  // 狭義単調増加
+    // vector<int>::iterator it = upper_bound(dp.begin(), dp.end(), X.at(i));  //  広義単調増加(未確認)
+    size_t pos = it - dp.begin();
+    if (i == 0) {
+      len.at(0) = (int)pos;
+    } else {
+      len.at(i) = max((int)pos, len.at(i - 1));
+    }
+    *it = X.at(i);
+    value.at(i) = dp.at(len.at(i));
+  }
+  return make_pair(len, value);
+}
+
+//  auto [len, value] = lis(v);
+//  int ans = *max_element(len.begin(), len.end());
+
+
+int main() {
+  int N, Q;
+  cin >> N >> Q;
+  vector<int> H(N);
+  for (int i = 0; i < N; i++) {
+    cin >> H.at(i);
+  }
+  vector<vector<int> > graph(N);
+  for (int j = 1; j < N; j++) {
+    int P;
+    cin >> P;
+    P--;
+    graph.at(j).push_back(P);
+    graph.at(P).push_back(j);
+  }
+  for (int qi = 0; qi < Q; qi++) {
+    int U, V;
+    cin >> U >> V;
+    U--; V--;
+    vector<int> path;
+    auto dfs = [&](auto dfs, int u, int parent) -> bool {
+      bool ans = false;
+      if (u == U) {
+        ans = true;
+      }
+      for (int v : graph.at(u)) {
+        if (v == parent) {
+          continue;
+        }
+        if (dfs(dfs, v, u)) {
+          ans = true;
+        }
+      }
+      if (ans == true) {
+        path.push_back(u);
+      }
+      return ans;
+    };
+    dfs(dfs, V, -1);
+    vector<int> A;
+    for (int u : path) {
+      A.push_back(-H.at(u));
+    }
+    auto [len, value] = lis(A);
+    int ans = *max_element(len.begin(), len.end());
+    cout << ans << '\n';
+  }
+  return 0;
+}

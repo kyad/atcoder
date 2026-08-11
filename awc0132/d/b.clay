@@ -1,0 +1,24 @@
+int@N,@Q,@H[N],A[N];
+VVI graph(N);
+rep(j,1,N){
+  int@P--;
+  graph.at(j).push_back(P);
+  graph.at(P).push_back(j);
+}
+rep(Q){
+  int@U--,@V--,M=0;
+  VI path;
+  auto dfs=[&](auto dfs,int u,int parent)->bool{
+    bool res=false;
+    if(u==U)res=true;
+    for(int v:graph[u]){
+      if(v==parent)continue;
+      if(dfs(dfs,v,u))res=true;
+    }
+    if(res==true)path.push_back(u);
+    return res;
+  };
+  dfs(dfs,V,-1);
+  for(int u:path)A[M++]=-H[u];
+  wt(LIS_length(M,A));
+}

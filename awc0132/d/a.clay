@@ -1,0 +1,2 @@
+#define P push_back
+ll@N,@Q,@H[N],A[N];VVI G(N);rep(j,1,N){ll@p--;G.at(j).P(p);G.at(p).P(j);}rep(Q){ll@U--,@V--,M=0;VI K;auto f=[&](auto f,ll u,ll o)->ll{ll r=0;if(u==U)r=1;for(ll v:G[u])if(v!=o&&f(f,v,u))r=1;if(r)K.P(u);return r;};f(f,V,-1);for(ll u:K)A[M++]=-H[u];wt(LIS_length(M,A));}
