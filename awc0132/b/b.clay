@@ -1,0 +1,7 @@
+int@N,@(S[N],C[N]);
+VI A(N);
+rep(i,N)A[i]=S[i];
+sort(A.begin(),A.end());
+ll res=0;
+rep(i,N)if(S[i]<C[i])res+=prev(lower_bound(A.begin(),A.end(),C[i]))-lower_bound(A.begin(),A.end(),S[i]);
+wt(res);
