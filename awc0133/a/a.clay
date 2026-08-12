@@ -1,0 +1,1 @@
+ll@(N,M,K),@T[N],@D[M],r=0;rep(j,M)T[D[j]-1]=0;rep(i,N)r+=T[i]/K;wt(r);
