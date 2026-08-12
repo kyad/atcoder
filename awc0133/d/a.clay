@@ -1,0 +1,1 @@
+ll@N,@T,@(L[N],R[N],V[N]),M=2d5,n;sortA(N,R,L,V);segtree_Point_Maxval<ll>t;t.malloc(M,1);rep(i,N){n=t.getMaxVal(0,L[i])+V[i];if(n>t[R[i]])t.change(R[i],n);}wt(t.getMaxVal(0,M+1));

@@ -1,0 +1,16 @@
+int@(N,M,K,T),res=0;
+rep(i,N){
+  int@S[M],now=0;
+  multiset<int>ms;
+  rep(j,K)ms.insert(S[j]);
+  int diff=*ms.rbegin()-*ms.begin();
+  if(diff>=T)now=1;
+  rep(j,1,M-K+1){
+    ms.erase(ms.find(S[j-1]));
+    ms.insert(S[j+K-1]);
+    int diff=*ms.rbegin()-*ms.begin();
+    if(diff>=T)now=1;
+  }
+  res+=now;
+}
+wt(res);

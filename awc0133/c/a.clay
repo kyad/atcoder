@@ -1,0 +1,15 @@
+int@N,@K--;
+VVI G(N);
+rep(j,1,N){
+  int@P--;
+  G.at(P).push_back(j);
+  G.at(j).push_back(P);
+}
+VI dp(N);
+auto f=[&](auto f,int u,int p,int h)->void{
+  if(u==K)h=1;
+  if(h)dp[u]=1;
+  for(int v:G[u])if(v!=p)f(f,v,u,h);
+};
+f(f,0,-1,0);
+wt((ll)count(dp.begin(),dp.end(),0));
