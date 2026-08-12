@@ -1,0 +1,1 @@
+ll@(N,K,T),r=0,A[N-2],j=0;rep(i,N){ll@a;if(i==T-1)r+=a;else A[j++]=a;}sortA(N-1,A);rep(i,K-1)r+=A[N-2-i];wt(r);
