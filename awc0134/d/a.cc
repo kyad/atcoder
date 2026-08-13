@@ -14,6 +14,7 @@ int main() {
   for (int i = 0; i < N; i++) {
     cin >> H.at(i) >> V.at(i);
   }
+  // dp[i][j][k]: iからjまで取る時で金額がkの時の価値の和の最大値
   vector<vector<vector<long long>>> dp(N, vector<vector<long long>>(N, vector<long long>(M + 1, 0)));
   for (int i = 0; i < N; i++) {
     dp.at(i).at(i).at(H.at(i)) = V.at(i);
@@ -21,7 +22,7 @@ int main() {
   for (int i = 0; i < N; i++) {
     for (int j = i; j < N; j++) {
       for (int k = 0; k <= M; k++) {
-        if (i - 1 > 0) {
+        if (i - 1 >= 0) {
           chmax(dp.at(i - 1).at(j).at(k), dp.at(i).at(j).at(k));
           if (k - H.at(i - 1) >= 0) {
             chmax(dp.at(i - 1).at(j).at(k), dp.at(i).at(j).at(k - H.at(i - 1)) + V.at(i - 1));
