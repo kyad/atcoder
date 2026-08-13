@@ -1,0 +1,35 @@
+ll@(N,Q,P,D),@A[N];P-=D;
+ll U[N],r=0,sum=0;U[0..N-1]=-1;
+rep(l,N){
+  for(;;){
+    ll nr=r+1;
+    if(nr>=N+1)break;
+    ll nsum=sum+A[nr-1];
+    if(nsum>P)break;
+    r=nr;
+    sum=nsum;
+  }
+  if(sum==P&&l<r)U[r-1]=l;
+  if(l==r)r++;else sum-=A[l];
+}
+fenwick<ll>C,T;
+C.malloc(N,1);C.init(N);
+T.malloc(N,1);T.init(N);
+vector<vector<pair<int,int>>>query(N);
+rep(j,Q){
+  ll@L--,@R--;
+  query[R].push_back({L,j});
+}
+ll res_c[Q],res_t[Q];
+rep(r,N){
+  ll u=U[r];
+  if(u>=0){
+    C.add(u,1);
+    T.add(u,r-u+1);
+  }
+  for(auto[l,j]:query[r]){
+    res_c[j]=C.range(l,N-1);
+    res_t[j]=T.range(l,N-1);
+  }
+}
+rep(j,Q)wt(res_c[j],res_t[j]);
