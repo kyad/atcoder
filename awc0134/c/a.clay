@@ -1,0 +1,59 @@
+vector<long long> xs;
+struct CC {
+  bool initialized;
+  CC() : initialized(false) {}
+  void add(long long x) { xs.push_back(x); }
+  void init() {  // O(Nlog(N))
+    sort(xs.begin(), xs.end());
+    xs.erase(unique(xs.begin(), xs.end()), xs.end());
+    initialized = true;
+  }
+  int operator()(long long x) {  // 圧縮前の値から圧縮後の値を得る。O(logN)
+    if (!initialized) { init(); }
+    return upper_bound(xs.begin(), xs.end(), x) - xs.begin() - 1;
+  }
+  long long operator[](int i) {  // 圧縮後の値から圧縮前の値を得る。O(1)
+    if (!initialized) { init(); }
+    return xs[i];
+  }
+  int size() {
+    if (!initialized) { init(); }
+    return xs.size();
+  }
+};
+
+{
+  int@N,@D;
+  CC cc;
+  cc.add(-1);
+  cc.add(ll_inf);
+  vector<int>X(N);
+  vector<ll>C(N);
+  rep(i,N){
+    rd(X[i],C[i]);
+    cc.add(X[i]);
+  }
+  int M=cc.size();
+  segtree<ll>t;
+  t.malloc(M,1);
+  rep(i,N){
+    int z=cc(X[i]);
+    t[z]=C[i];
+  }
+  t.build();
+  ll ans=ll_inf;
+  rep(i,N){
+    int z=cc(X[i]);
+    ll mn=ll_inf;
+    int zl=lower_bound(xs.begin(),xs.end(),X[i]-D)-xs.begin();
+    if(zl==0)zl=1;
+    if(zl<=z-1)mn<?=t.getMinVal(zl,z);
+    int zr=prev(upper_bound(xs.begin(),xs.end(),X[i]+D))-xs.begin();
+    if(zr==M-1)zr=M-2;
+    if(z+1<=zr)mn<?=t.getMinVal(z+1,zr+1);
+    if(mn!=ll_inf)ans<?=C[i]+mn;
+  }
+  if(ans==ll_inf)ans=-1;
+  wt(ans);
+}
+
