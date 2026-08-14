@@ -1,0 +1,19 @@
+ll@N,@W,@M,@(L[N]--,R[N]--),P[7];P[0..6]=W;
+auto f=[&](ll E,ll x){
+  if(E<0)return;
+  for(ll d=0;d<7;d++)P[d]+=E/7*x;
+  for(ll d=E/7*7;d<=E;d++)P[d%7]+=x;
+};
+rep(j,M){
+  ll@S--,@E--;
+  f(E,1);
+  f(S-1,-1);
+}
+rep(i,N){
+  ll res=0;
+  auto g=[&](ll l,ll r){
+    for(ll d=l;d<=r;d++)res+=P[d];
+  };
+  if(L[i]<=R[i])g(L[i],R[i]);else{g(0,R[i]);g(L[i],6);}
+  wt(res);
+}
