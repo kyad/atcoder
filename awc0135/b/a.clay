@@ -1,0 +1,6 @@
+ll@N,@P,@S,r=1;
+rep(i,N-1){
+  ll@p,@s;
+  if(S*p<P*s)P=p,S=s,r=i+2;
+}
+wt(r);
