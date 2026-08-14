@@ -1,0 +1,9 @@
+ll@N;
+VVLL graph(N);
+rep(N){ll@C--,@L;graph.at(C).push_back(L);}
+ll res=0;
+rep(c,N){
+  int M=graph.at(c).size();
+  rep(i,M)rep(j,i+1,M)res+=abs(graph.at(c)[i]-graph.at(c)[j]);
+}
+wt(res);
