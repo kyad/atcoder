@@ -1,0 +1,12 @@
+ll dp[1d3][1d3];
+{
+  int@N,@M,@A[N][M];
+  dp[0][0]=A[0][0];
+  int dy[2]={0,1};
+  int dx[2]={1,0};
+  rep(y,N)rep(x,M)rep(k,2){
+    int ny=y+dy[k],nx=x+dx[k];
+    if(0<=ny<N&&0<=nx<M)dp[ny][nx]>?=dp[y][x]+A[ny][nx];
+  }
+  wt(dp[N-1][M-1]);
+}
