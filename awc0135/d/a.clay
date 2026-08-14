@@ -1,0 +1,1 @@
+ll@N,@V,@(X[N],D[N]),x=0,o=2d18,k,L,R,O,m;while(o-x>1){k=(x+o)/2;L=0,R=1d9,O=1;rep(i,N){m=V-D[i]/+k;if(m<0)O=0,break;L>?=X[i]-m;R<?=X[i]+m;}if(O&&L<=R)o=k;else x=k;}wt(o==2d18?-1:o);

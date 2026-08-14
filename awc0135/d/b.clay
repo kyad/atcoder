@@ -1,0 +1,14 @@
+ll@N,@V,@(X[N],D[N]),x=0,o=ll_inf;
+while(o-x>1){
+  ll k=(x+o)/2;
+  ll L=0,R=1d9,O=1;
+  rep(i,N){
+    ll m=V-D[i]/+k;
+    if(m<0)O=0,break;
+    L>?=X[i]-m;
+    R<?=X[i]+m;
+  }
+  if(O&&L<=R)o=k;
+  else x=k;
+}
+wt(o==ll_inf?-1:o);
