@@ -1,0 +1,2 @@
+#define MD 998244353
+ll@N,@K,@A[N];combination_mint c;c.init(3d5);mint S,T;rep(i,N)S+=A[i]*A[i],T+=A[i];T*=T;wt(c.C(N-1,K-1)*S+c.C(N-2,K-2)*(T-S));
