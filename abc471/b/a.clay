@@ -1,0 +1,10 @@
+int@N;
+map<string,int>mp;
+rep(i,N){
+  string@S,T;
+  for(char c:S)T.push_back(tolower(c));
+  mp[T]++;
+}
+int res=0;
+for(auto[S,n]:mp)res>?=n;
+wt(res);
