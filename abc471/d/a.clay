@@ -1,0 +1,20 @@
+ll@Q,@V,ofs=0;
+multiset<ll>ms;
+rep(Q){
+  ll@t;
+  if(t==1){
+    ll@T,@W;
+    W-=T;
+    ms.insert(W);
+    ofs=T;
+  }else{
+    ll@T;
+    ofs=T;
+    if(ms.empty())wt(-1);
+    else{
+      ll mx=*ms.rbegin();
+      wt(min(V,mx+ofs));
+      ms.erase(ms.find(mx));
+    }
+  }
+}
