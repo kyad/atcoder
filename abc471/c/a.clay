@@ -1,0 +1,18 @@
+ll@N,@A[N];
+multiset<ll>ms;
+rep(i,N)ms.insert(A[i]);
+ms.insert(int_inf);
+ms.insert(-int_inf);
+ll res=0,x=0;
+while(ms.size()>=3){
+  ll r=*ms.lower_bound(x);
+  ll l=*prev(ms.lower_bound(x));
+  ll nx;
+  if(r==int_inf)nx=l;
+  else if(l==-int_inf)nx=r;
+  else nx=r-x>=x-l?l:r;
+  res+=abs(x-nx);
+  ms.erase(ms.find(nx));
+  x=nx;
+}
+wt(res);
