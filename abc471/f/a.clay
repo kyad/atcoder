@@ -1,0 +1,25 @@
+int@N,@K;
+VS@S(N);
+sort(S.begin(),S.end(),[](const string &a,const string &b){
+  if(a.size()==b.size()){return a>b;}
+  else{return a.size()>b.size();}
+});
+ll best=0;
+rep(i,K-1,N)best>?=stoll(S[i]);
+string res="0";
+auto f=[&](VS S){
+  sort(S.begin(),S.end(),[](const string &a,const string &b){
+    return a+b>b+a;
+  });
+  string now;
+  for(string s:S)now+=s;
+  reverse(now.begin(), now.end());
+  while(now.size()>1&&now.back()=='0')now.pop_back();
+  reverse(now.begin(), now.end());
+  if(now.size()>res.size()||(now.size()==res.size()&&now>res))res=now;
+};
+f(vector<string>(S.begin(),S.begin()+K));
+vector<string>T(S.begin(),S.begin()+K-1);
+T.push_back(to_string(best));
+f(T);
+wt(res);
