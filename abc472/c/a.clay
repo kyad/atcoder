@@ -1,0 +1,12 @@
+ll@(N,M,K),@A[N],sum=0;
+VS B(N,"No");
+rep(i,N){
+  if(i>=M){
+    int j=i-M;
+    if(B[j]=="Yes")sum-=A[j];
+  }
+  ll nsum=sum;
+  nsum+=A[i];
+  if(nsum<=K)B[i]="Yes",sum=nsum;
+}
+rep(i,N)wt(B[i]);
