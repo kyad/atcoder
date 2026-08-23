@@ -1,0 +1,3 @@
+string@S,res;
+for(char c:S)res+=c=='A'?c:'.';
+wt(res);
