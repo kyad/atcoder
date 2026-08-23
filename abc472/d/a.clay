@@ -1,0 +1,22 @@
+int@(H,W,K);
+VS @S(H);
+int T[H];T[0..H-1]=0;
+int U[W];U[0..W-1]=0;
+rep(y,H)rep(x,W)if(S[y][x]=='#')T[y]++,U[x]++;
+queue<pair<int,int>>todo;
+int dist[H][W];dist[0..H-1][0...W-1]=-1;
+rep(y,H)rep(x,W)if(T[y]==0&&U[x]==0&&S[y][x]=='.')dist[y][x]=0,todo.push({y,x});
+int dy[4]={0,-1,0,1};
+int dx[4]={1,0,-1,0};
+while(!todo.empty()){
+  auto[y,x]=todo.front();
+  todo.pop();
+  rep(k,4){
+    int ny=y+dy[k],nx=x+dx[k];
+    if(ny<0||ny>=H||nx<0||nx>=W||S[ny][nx]=='#')continue;
+    if(dist[ny][nx]<0)dist[ny][nx]=dist[y][x]+1,todo.push({ny,nx});
+  }
+}
+int res=0;
+rep(y,H)rep(x,W)if(0<=dist[y][x]<=K)res++;
+wt(res);
