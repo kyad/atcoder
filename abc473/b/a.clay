@@ -1,0 +1,5 @@
+int@N,@A[N],count[101];count[0..100]=0;
+rep(i,N)count[A[i]]++;
+int res=0;
+rep(a,1,101)res+=count[a]%2*a;
+wt(res);
