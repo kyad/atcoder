@@ -1,0 +1,15 @@
+int@N,@K,@A[N]--;
+int B[K];B[0..K-1]=0;
+rep(i,N)B[A[i]]++;
+int C[N+1];C[0..N]=0;
+rep(k,K)C[B[k]]++;
+int b0=-1,b1=-1;
+rrep(b,0,N+1){
+  if(C[b]!=0){
+    if(b0<0)b0=b;
+    else b1=b,break;
+  }
+}
+if(b1==-1)wt(C[b0]),exit(0);
+if(b0-b1==1)wt(C[b0]+C[b1]);
+else wt(C[b0]);
