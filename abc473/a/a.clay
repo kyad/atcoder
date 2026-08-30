@@ -1,0 +1,1 @@
+int@N,@A[N];wt(sum[i,N/2,N](A[i]));
