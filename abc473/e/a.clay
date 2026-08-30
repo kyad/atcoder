@@ -1,0 +1,12 @@
+int@N,@K,@A[N];A[0]%=K;
+rep(i,1,N)A[i]+=A[i-1],A[i]%=K;
+int last=-1,res=0;
+map<int,int>mp;
+mp[0]=-1;
+rep(i,N){
+  if(mp.contains(A[i])){
+    if(last<=mp[A[i]])last=i,res++;
+  }
+  mp[A[i]]=i;
+}
+wt(res);
