@@ -1,0 +1,31 @@
+int@N,@K,@T[N];
+int r=0;
+map<int,int>mp;
+int k=0;
+size_t res=0;
+rep(l,N){
+  while(true){
+    int nr=r+1;
+    if(nr>=N+1)break;
+    int dk;
+    if(mp.contains(T[r]))dk=1;
+    else dk=0;
+    int nk=k+dk;
+    if(nk>K)break;
+    r=nr;
+    mp[T[r-1]]++;
+    k=nk;
+  }
+  res>?=mp.size();
+  if(l==r){
+    r++;
+  }else{
+    if(mp[T[l]]==1){
+      mp.erase(T[l]);
+    }else{
+      mp[T[l]]--;
+      k--;
+    }
+  }
+}
+wt((int)res);

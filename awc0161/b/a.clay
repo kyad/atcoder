@@ -1,0 +1,1 @@
+ll@N,@A[N],r=0;rsortA(N,A);rep(i,0,N,2)r+=A[i];wt(r);
