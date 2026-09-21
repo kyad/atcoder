@@ -1,0 +1,9 @@
+ll@N,@A[N],dp[N][N][2];
+dp[0..N-1][0..N-1][0...2]=A[0..N-1];
+rep(d,1,N)rep(l,N){
+  ll r=l+d;
+  if(r>=N)break;
+  dp[l][r][0]=min(dp[l+1][r][1],dp[l][r-1][1]);
+  dp[l][r][1]=max(dp[l+1][r][0],dp[l][r-1][0]);
+}
+wt(dp[0][N-1][1]);
