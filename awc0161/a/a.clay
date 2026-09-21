@@ -1,0 +1,12 @@
+int@N,@A[N],P[N],res=-1;
+if(N==1)wt(0),exit(0);
+rep(i,N)P[i]=i;
+do{
+  int now=0;
+  rep(i,N-1){
+    int p=P[i],q=P[i+1];
+    now+=abs(A[q]-A[p]);
+  }
+  res>?=now;
+}while(next_permutation(P,P+N));
+wt(res);
