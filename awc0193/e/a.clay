@@ -1,0 +1,38 @@
+const int M=2d5+3;
+int imos[M+2];
+{
+  int@N,@Q,@S[N];
+  int mode=0,left=-1,top=-1;
+  rep(i,N){
+    if(mode==0){
+      if(S[i]<S[i+1])mode=1,left=i;
+    }else if(mode==1){
+      if(S[i]<S[i+1]){}
+      else if(S[i]>S[i+1])mode=2,top=i;
+      else mode=0;
+    }else{
+      if(S[i]>S[i+1]){}
+      else{
+        int right=i,L=top-left,R=right-top;
+        imos[3]++;
+        imos[3+L]--;
+        imos[3+R]--;
+        imos[3+L+R]++;
+        if(S[i]<S[i+1])mode=1,left=i;
+        else mode=0,left=-1;
+      }
+    }
+  }
+  if(mode==2){
+    int right=N-1,L=top-left,R=right-top;
+    imos[3]++;
+    imos[3+L]--;
+    imos[3+R]--;
+      imos[3+L+R]++;
+  }
+  rep(2)rep(i,M+1)imos[i+1]+=imos[i];
+  rep(Q){
+    int@K;
+    wt(imos[K]);
+  }
+}
