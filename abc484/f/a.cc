@@ -116,8 +116,8 @@ template<class X> struct SegTree {
   SegTree(int n_, FX fx_, X ex_) { init(n_, fx_, ex_); }
 
   // 初期化 O(N) i: 0-indexed
-  void set(int i, X x) { dat[i + n - 1] = x; }  // dat[n-1]~dat[2n-2]に値が入る
-  void set1(int i, X x) { set(i - 1, x); }  // 1-indexed
+  void initial_set(int i, X x) { dat[i + n - 1] = x; }  // dat[n-1]~dat[2n-2]に値が入る
+  void initial_set1(int i, X x) { initial_set(i - 1, x); }  // 1-indexed
   void build() {  // O(logN)
     for (int k = n - 2; k >= 0; k--) {
       dat[k] = fx(dat[2 * k + 1], dat[2 * k + 2]);
@@ -182,6 +182,33 @@ template<class X> ostream& operator<<(ostream& os, const SegTree<X> &segtree) {
   return os;
 }
 
+// 1点更新・区間最小値
+// auto fx = [](int x1, int x2) -> int { return min(x1, x2); };
+// SegTree<int> seg(N, fx, INF);
+// auto fx = [](long long x1, long long x2) -> long long { return min(x1, x2); };
+// SegTree<long long> seg(N, fx, INF);
+
+// 1点更新・区間最大値
+// auto fx = [](int x1, int x2) -> int { return max(x1, x2); };
+// SegTree<int> seg(N, fx, -INF);
+// auto fx = [](long long x1, long long x2) -> long long { return max(x1, x2); };
+// SegTree<long long> seg(N, fx, -INF);
+
+// // 初期化 i: 0-indexed
+// for (int i = 0; i < N; i++) {
+//   seg.initial_set(i, A.at(i));
+// }
+// seg.build();  // 構築
+
+// ★★更新時にinitial_setを使ってはいけない★★
+
+// // 更新クエリ O(logN) i: 0-indexed
+// seg.update(i, x);
+// // 取得クエリ O(logN) [l, r), l, r: 0-indexed
+// long long ans = seg.query(l, r);
+
+// 区間更新ならlazysegtreeを使う
+
 int main() {
   int N, Q;
   cin >> N >> Q;
@@ -201,7 +228,7 @@ int main() {
     } else {
       bit2.add(i, A.at(i));
     }
-    seg.set(i, A.at(i));
+    seg.initial_set(i, A.at(i));
   }
   seg.build();  // 構築
   for (int qi = 0; qi < Q; qi++) {
